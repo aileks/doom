@@ -26,9 +26,6 @@
   (evil-paste-after 1))
 (map! :v "p" #'+evil-visual-restore-paste)
 
-;; Floating terminal toggle (nvim: C-/)
-(map! :n "C-/" #'+vterm/toggle :n "C-_" #'+vterm/toggle)
-
 ;; TODO/FIXME comment search across the project (todo-comments.nvim pickers)
 (defconst +todo-comment-keywords
   '("TODO" "NEXT" "WAIT" "FIXME" "BUG" "HACK" "WARN" "PERF" "NOTE" "TEST")
