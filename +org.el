@@ -25,7 +25,7 @@
   (setq org-agenda-custom-commands
         '(("n" "Next actions" todo "NEXT")
           ("w" "Waiting on" todo "WAIT")
-          ("o" "Open tasks" tags-todo "-DONE-CANCELLED")
+          ("o" "Open tasks" tags-todo "")
           ("a" "Agenda and all TODOs"
            ((agenda "")
             (alltodo "")))))
@@ -48,7 +48,9 @@
   ;; --- Refiling and archiving ---------------------------------------------
   (setq org-refile-targets '((org-agenda-files :maxlevel . 3))
         org-refile-use-outline-path 'file
-        org-archive-location (concat org-directory "archive/%Y.org::"))
+        ;; Per-source-file archives: todo.org -> archive/todo.org_archive.
+        org-archive-location (expand-file-name "archive/%s_archive::"
+                                               org-directory))
 
   ;; --- Clocking -------------------------------------------------------------
   (setq org-clock-idle-time 15

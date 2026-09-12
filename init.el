@@ -67,7 +67,7 @@
  (lua +lsp +tree-sitter)   ; LuaLS w/ LuaJIT + nvim globals, stylua
  markdown                  ; markview.nvim closest supported stand-in
  org                       ; the main event
- (python +lsp +tree-sitter +uv) ; basedpyright + ruff, uv venvs
+ (python +lsp +pyright +tree-sitter +uv) ; basedpyright (via lsp-pyright) + ruff, uv venvs
  sh                        ; shfmt + shellcheck (no bash LSP, like nvim)
  (yaml +lsp +tree-sitter)
  (zig +lsp +tree-sitter)   ; zls + zig fmt
