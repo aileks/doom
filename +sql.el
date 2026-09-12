@@ -21,7 +21,9 @@
     (lambda (output _checker _buffer)
       (let (errors)
         (dolist (report (condition-case nil
-                            (json-parse-string output :object-type 'plist)
+                            (json-parse-string output :object-type 'plist
+                                               :array-type 'list
+                                               :false-object :json-false)
                           (error nil))
                         (nreverse errors))
           (dolist (violation (plist-get report :violations))
