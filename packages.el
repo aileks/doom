@@ -2,4 +2,4 @@
 
 (package! cinder-grove
   :recipe (:host github :repo "aileks/cinder-grove.el")
-  :pin "b92a7d6d139a92e34c4181e29caf9f65631ce374")
+  :pin "400767c1e288c0295aa3803617f2ecef742a0486")
