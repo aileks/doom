@@ -1,18 +1,7 @@
 ;;; +debug-print.el -*- lexical-binding: t; -*-
-;;
-;; Debug-print insertion and cleanup (refactoring.nvim's debug-print suite,
-;; trimmed to what this config actually used). Bound under SPC c p (see
-;; +bindings.el). Every print carries the DBG: marker so
-;; `+debug-print/cleanup' can strip them. Printf-style templates assume
-;; numeric-ish expressions (see the C/C++/Zig casts); expressions are
-;; interpolated verbatim without language-aware escaping.
 
 (defconst +debug-print-marker "DBG:")
 
-;; Format strings per canonical major mode: :var takes (NAME NAME),
-;; :loc takes (FILE LINE). A \\n in a template is the target language's
-;; backslash-n, not an Elisp newline. Native tree-sitter modes are
-;; normalized onto these by `+debug-print--canonical-mode'.
 (defvar +debug-print--templates
   '((python-mode
      :var "print(f\"DBG: {%s=}\")"
@@ -28,7 +17,7 @@
      :loc "printf(\"DBG: %s:%d\\n\");")
     (zig-mode
      :var "std.debug.print(\"DBG: %s: {any}\\n\", .{%s});"
-     :loc "std.debug.print(\"DBG: %s:%d\\n\", .{});")
+     :loc "std.debug.print(\"DBG: %s:{d}\\n\", .{%d});")
     (sh-mode
      :var "echo \"DBG: %s=$%s\""
      :loc "echo \"DBG: %s:$LINENO\"")

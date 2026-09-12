@@ -1,12 +1,4 @@
 ;;; +tasks.el -*- lexical-binding: t; -*-
-;;
-;; Project tasks (overseer.nvim replacement). One-shot commands run
-;; asynchronously in compile buffers, restartable with `recompile'
-;; (SPC c C or g in the compile buffer).
-;; Roots are found from the current file's directory, so nested projects
-;; (a dbt project inside a bigger repo) are found even when the git root is
-;; above them. User-provided arguments are shell-quoted; everything else is
-;; fixed text. Menu: SPC p t (bound in +bindings.el).
 
 (require 'transient)
 
@@ -22,8 +14,6 @@
   "Run COMMAND asynchronously in a compile buffer rooted at DIR (or cwd)."
   (let ((default-directory (or dir default-directory)))
     (compile command)))
-
-;;; --- dbt -----------------------------------------------------------------
 
 (defun +tasks--read-select ()
   "Optional dbt --select argument, or nil."
@@ -49,8 +39,6 @@ SELECT, when non-nil, appends `--select SELECT' (shell-quoted)."
               (when select (list "--select" (shell-quote-argument select))))
       " "))))
 
-;;; --- Zig -------------------------------------------------------------------
-
 (defun +tasks-zig-build ()
   (interactive)
   (let ((root (+tasks--root "build.zig")))
@@ -63,13 +51,10 @@ SELECT, when non-nil, appends `--select SELECT' (shell-quoted)."
     (unless root (user-error "Not inside a Zig project (no build.zig)"))
     (+tasks--run root "zig build test")))
 
-;;; --- CMake -------------------------------------------------------------------
-
 (defun +tasks-cmake-configure ()
   (interactive)
   (let ((root (+tasks--root "CMakeLists.txt")))
     (unless root (user-error "Not inside a CMake project (no CMakeLists.txt)"))
-    ;; Exporting the compile DB lets clangd pick it up out of build/.
     (+tasks--run root
                  "cmake -S . -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON")))
 
@@ -79,14 +64,10 @@ SELECT, when non-nil, appends `--select SELECT' (shell-quoted)."
     (unless root (user-error "Not inside a CMake project (no CMakeLists.txt)"))
     (+tasks--run root "cmake --build build")))
 
-;;; --- Arbitrary shell task ------------------------------------------------------
-
 (defun +tasks-shell (command)
   "Run an arbitrary shell COMMAND at the project root (or cwd)."
   (interactive "sShell command: ")
   (+tasks--run (or (projectile-project-root) default-directory) command))
-
-;;; --- Menu ----------------------------------------------------------------------
 
 (transient-define-prefix +tasks-menu ()
   "Project tasks."

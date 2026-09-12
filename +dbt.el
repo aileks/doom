@@ -1,10 +1,4 @@
 ;;; +dbt.el -*- lexical-binding: t; -*-
-;;
-;; dbt support: Jinja highlighting layered onto sql-mode buffers inside a
-;; dbt project, replacing the Neovim setup's custom dbt filetype plus
-;; syntax/dbt.vim. A minor mode avoids introducing a new major-mode symbol,
-;; so sql-mode tooling (sqls LSP, sqlfluff) keeps working unchanged in dbt
-;; buffers - fixing the gap where Neovim's sqlfluff never ran on dbt files.
 
 (defun +dbt-project-root (&optional dir)
   "Nearest directory above DIR containing dbt_project.yml, or nil."
@@ -17,9 +11,6 @@
                 "macro" "set")
               'words))
 
-;; Ported from syntax/dbt.vim: SQL highlighting stays (sql-mode), these add
-;; the Jinja expression/statement/comment layers. OVERRIDE t wins where the
-;; patterns overlap sql-mode's own.
 (defconst +dbt--font-lock-keywords
   `(("\\(?:{{\\|{%\\)[^}%]*?\\(\"[^\"]*\"\\|'[^']*'\\)" 1 font-lock-string-face t)
     (,(concat "{{\\s-*" +dbt--jinja-functions) 0 font-lock-function-name-face t)

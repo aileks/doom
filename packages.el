@@ -1,6 +1,5 @@
 ;;; packages.el -*- lexical-binding: t; -*-
-;;
-;; No extra packages are declared: the enabled Doom modules provide
-;; everything this config uses, including the language servers' Emacs-side
-;; clients (lsp-pyright arrives via :lang python +pyright). Anything added
-;; here should be pinned deliberately (:pin ...).
+
+(package! cinder-grove
+  :recipe (:host github :repo "aileks/cinder-grove.el")
+  :pin "b92a7d6d139a92e34c4181e29caf9f65631ce374")
