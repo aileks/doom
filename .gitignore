@@ -1,4 +1,3 @@
-; Runtime state and downloaded tooling that must never be committed
 /custom.el
 /debug-adapters/
 /transient/
