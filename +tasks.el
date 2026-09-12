@@ -51,17 +51,25 @@ SELECT, when non-nil, appends `--select SELECT' (shell-quoted)."
     (unless root (user-error "Not inside a Zig project (no build.zig)"))
     (+tasks--run root "zig build test")))
 
+(defun +tasks--cmake-root ()
+  "Prefer the project root's CMakeLists.txt over nested build definitions."
+  (let ((root (projectile-project-root
+               (if buffer-file-name
+                   (file-name-directory buffer-file-name)
+                 default-directory))))
+    (or (and root (file-exists-p (expand-file-name "CMakeLists.txt" root)) root)
+        (+tasks--root "CMakeLists.txt")
+        (user-error "Not inside a CMake project (no CMakeLists.txt)"))))
+
 (defun +tasks-cmake-configure ()
   (interactive)
-  (let ((root (+tasks--root "CMakeLists.txt")))
-    (unless root (user-error "Not inside a CMake project (no CMakeLists.txt)"))
+  (let ((root (+tasks--cmake-root)))
     (+tasks--run root
                  "cmake -S . -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON")))
 
 (defun +tasks-cmake-build ()
   (interactive)
-  (let ((root (+tasks--root "CMakeLists.txt")))
-    (unless root (user-error "Not inside a CMake project (no CMakeLists.txt)"))
+  (let ((root (+tasks--cmake-root)))
     (+tasks--run root "cmake --build build")))
 
 (defun +tasks-shell (command)

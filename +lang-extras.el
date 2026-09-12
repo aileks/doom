@@ -6,16 +6,19 @@
 (add-hook! '(python-mode-hook python-ts-mode-hook
             c-mode-hook c-ts-mode-hook c++-mode-hook c++-ts-mode-hook
             cuda-mode-hook cuda-ts-mode-hook
-            sql-mode-hook zig-mode-hook)
+            sql-mode-hook zig-mode-hook zig-ts-mode-hook)
   (setq-local tab-width 4))
 
 (add-hook 'c-mode-common-hook
           (defun +lang-extras--c-indent-h ()
             (setq-local c-basic-offset 4)))
 
+(setq-hook! '(c-ts-mode-hook c++-ts-mode-hook cuda-ts-mode-hook)
+  c-ts-mode-indent-offset 4)
+
 (after! lsp-clangd
-  (setq lsp-clients-clangd-args
-        '("--background-index" "--clang-tidy" "--completion-style=detailed")))
+  (dolist (argument '("--background-index" "--clang-tidy" "--completion-style=detailed"))
+    (cl-pushnew argument lsp-clients-clangd-args :test #'equal)))
 
 (setq lsp-pyright-langserver-command "basedpyright"
       lsp-pyright-disable-organize-imports t)
@@ -37,8 +40,10 @@
 
 (set-formatter! 'prettier :modes '(markdown-mode gfm-mode))
 
-(set-formatter! 'clang-format :modes '(cuda-mode cuda-ts-mode))
-
 (set-formatter! 'shfmt
-  '("shfmt" "-i" "2" "-ci" "-bn" "-filename" filepath "-")
+  '("shfmt" "-filename" filepath
+    ;; Any printer flags disable shfmt's EditorConfig support.
+    (unless (locate-dominating-file default-directory ".editorconfig")
+      '("-i" "2" "-ci" "-bn"))
+    "-")
   :modes '(sh-mode bash-ts-mode))

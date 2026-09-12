@@ -18,7 +18,7 @@
               "-")
     :standard-input t
     :error-parser
-    (lambda (output _checker _buffer)
+    (lambda (output checker buffer)
       (let (errors)
         (dolist (report (condition-case nil
                             (json-parse-string output :object-type 'plist
@@ -34,7 +34,10 @@
                      (if (eq warning :json-false) 'error 'warning)
                      (format "%s %s"
                              (plist-get violation :code)
-                             (plist-get violation :description)))
+                             (plist-get violation :description))
+                     :checker checker
+                     :buffer buffer
+                     :id (plist-get violation :code))
                     errors))))))
     :modes sql-mode)
   (add-to-list 'flycheck-checkers 'sql-sqlfluff))

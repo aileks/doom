@@ -40,18 +40,9 @@
     (interactive)
     (+vertico/project-search
      nil
-     (concat "\\b(" (string-join +todo-comment-keywords "|") ")\\b")
+     (regexp-opt +todo-comment-keywords 'words)
      (or (projectile-project-root) default-directory))))
 
 (map! :leader :desc "Search TODO comments" "f t" #'+todo/search)
 
 (map! :leader :desc "Project tasks" "p t" #'+tasks-menu)
-
-(map! :leader
-      :desc "Debug print variable below"     "c p v" #'+debug-print/var-below
-      :desc "Debug print variable above"     "c p V" #'+debug-print/var-above
-      :desc "Debug print expression below"   "c p e" #'+debug-print/expr-below
-      :desc "Debug print expression above"   "c p E" #'+debug-print/expr-above
-      :desc "Debug print location below"     "c p p" #'+debug-print/loc-below
-      :desc "Debug print location above"     "c p P" #'+debug-print/loc-above
-      :desc "Remove all debug prints"        "c p c" #'+debug-print/cleanup)

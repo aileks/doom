@@ -46,7 +46,6 @@
  syntax
 
  :tools
- debugger
  editorconfig
  (eval +overlay)
  lookup
