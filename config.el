@@ -1,8 +1,11 @@
 ;;; config.el -*- lexical-binding: t; -*-
 
+(add-to-list 'default-frame-alist '(alpha-background . 95))
+
 (setq org-directory "~/org")
 
 (setq doom-theme 'cinder-grove
+      cg-transparent t
       doom-font (font-spec :family "IosevkaTerm Nerd Font" :size 18))
 
 (when-let* ((theme-file (locate-library "cinder-grove-theme.el")))
