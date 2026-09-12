@@ -27,6 +27,15 @@
   (setq evil-escape-key-sequence "jk"
         evil-escape-delay 0.15))
 
+(after! apheleia
+  (setf (alist-get 'shfmt apheleia-formatters)
+        '("shfmt"
+          "--filename" filepath
+          "-i" "2"
+          "-ci"
+          "-bn"
+          "-")))
+
 (load! "+bindings")
 (load! "+org")
 (load! "+sql")

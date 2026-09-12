@@ -62,7 +62,7 @@
  markdown
  org
  (python +lsp +pyright +tree-sitter +uv)
- sh
+ (sh +lsp)
  (yaml +lsp +tree-sitter)
  (zig +lsp +tree-sitter)
 
