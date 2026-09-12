@@ -53,14 +53,10 @@
      ("Lua.diagnostics.globals" ["vim"])
      ("Lua.workspace.checkThirdParty" false))))
 
-;;; --- JSON/YAML schemas (SchemaStore.nvim equivalent) --------------------------
-(after! (lsp-mode schemastore)
-  (add-hook 'json-mode-hook
-            (defun +lang-extras--json-schemas-h ()
-              (setq-local lsp-json-schemas (schemastore-json))))
-  (add-hook 'yaml-mode-hook
-            (defun +lang-extras--yaml-schemas-h ()
-              (setq-local lsp-yaml-schemas (schemastore-yaml)))))
+;;; --- JSON/YAML schemas -------------------------------------------------------
+;; yaml-language-server ships with built-in SchemaStore support (the nvim
+;; config disabled that only because SchemaStore.nvim supplied schemas
+;; itself). JSON files declare their own $schema key. Nothing to wire here.
 
 ;;; --- Formatters (explicit tools, precedence ported from conform.nvim) -------
 

@@ -1,1 +1,4 @@
-# emacs-config
+# Doom Emacs Config
+
+My Doom Emacs configuration.
+

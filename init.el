@@ -2,7 +2,7 @@
 ;;
 ;; Doom Emacs private config (DOOMDIR) for aileks.
 ;; Ported from nvim-config @ 4e435e831fde1ee3b1f78cb8211d9822efe3eaf6.
-;; Docs live in ./docs/. Run `doom sync` after editing this file.
+;; Run `doom sync` after editing this file.
 
 ;; Must be set before the :editor evil module loads its window/wrap setup.
 (defvar evil-respect-visual-line-mode t)

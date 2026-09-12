@@ -1,9 +1,9 @@
 ;;; packages.el -*- lexical-binding: t; -*-
 ;;
-;; Extra packages beyond what the enabled Doom modules manage.
-;; Doom's own pins are kept untouched; these two small libraries track
-;; upstream releases deliberately (nothing here needs pinning yet).
-
-;; JSON/YAML schema catalog, wired into lsp-mode in +lang-extras.el.
-;; Equivalent of SchemaStore.nvim in the Neovim config.
-(package! schemastore)
+;; No extra packages yet: everything below ships with the enabled Doom
+;; modules. Doom's own package pins are kept untouched. If you add
+;; packages here, pin them deliberately (:pin ...).
+;;
+;; Note: JSON/YAML schemas come from yaml-language-server's built-in
+;; SchemaStore support and per-file $schema keys; no separate catalog
+;; package is installed.
