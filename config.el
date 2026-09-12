@@ -3,7 +3,6 @@
 (setq org-directory "~/org")
 
 (setq doom-theme 'cinder-grove
-      cinder-grove-transparent t
       doom-font (font-spec :family "IosevkaTerm Nerd Font" :size 18))
 
 (when-let* ((theme-file (locate-library "cinder-grove-theme.el")))
