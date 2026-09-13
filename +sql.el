@@ -7,8 +7,10 @@
       sql-database (user-login-name))
 
 (add-hook 'sql-mode-local-vars-hook #'lsp! 'append)
-(after! lsp-sqls
-  (setq lsp-sqls-workspace-config-path "workspace"))
+
+(setq lsp-sql-server-path "sql-language-server")
+(after! lsp-mode
+  (add-to-list 'lsp-disabled-clients 'sqls))
 
 (after! flycheck
   (flycheck-define-checker sql-sqlfluff
