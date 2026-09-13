@@ -6,7 +6,7 @@
 
 (setq doom-theme 'cinder-grove
       cg-transparent t
-      doom-font (font-spec :family "IosevkaTerm Nerd Font" :size 18))
+      doom-font (font-spec :family "Iosevka Nerd Font" :size 20))
 
 (when-let* ((theme-file (locate-library "cinder-grove-theme.el")))
   (add-to-list 'custom-theme-load-path (file-name-directory theme-file)))
