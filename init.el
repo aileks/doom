@@ -52,6 +52,8 @@
  lsp
  magit
  tree-sitter
+ (debugger +lsp)
+ direnv
 
  :lang
  emacs-lisp
@@ -64,6 +66,7 @@
  (sh +lsp)
  (yaml +lsp +tree-sitter)
  (zig +lsp +tree-sitter)
+ (java +lsp)
 
  :config
  (default +bindings +smartparens))
