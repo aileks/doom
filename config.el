@@ -20,15 +20,6 @@
 
 (setq-default truncate-lines nil)
 
-(after! lsp-java
-  (setq lsp-java-vmargs
-        '("-XX:+UseParallelGC" "-XX:GCTimeRatio=4"
-          "-XX:AdaptiveSizePolicyWeight=90" "-Dsun.zip.disableMemoryMapping=true"
-          "-Xmx1G" "-Xms100m"))
-  (setq lsp-java-import-gradle-enabled t
-        lsp-java-import-maven-enabled t)
-  (setq lsp-java-format-on-type-enabled nil))
-
 (use-package! lsp-java-boot
   :after lsp-java
   :hook ((lsp-mode . lsp-lens-mode)
@@ -40,24 +31,12 @@
         (expand-file-name "test-runner/junit-platform-console-standalone.jar"
                           lsp-java-server-install-dir)))
 
-(set-formatter! 'google-java-format "google-java-format -" :modes '(java-mode))
-
 (after! corfu
   (setq corfu-count 10))
 
 (after! evil-escape
   (setq evil-escape-key-sequence "jk"
         evil-escape-delay 0.15))
-
-(after! lsp-ui
-  (setq lsp-ui-doc-enable t
-        lsp-ui-doc-use-childframe t
-        lsp-ui-doc-position 'at-point
-        lsp-ui-doc-delay 0.2
-        lsp-ui-doc-max-width 120
-        lsp-ui-doc-max-height 30))
-
-(map! :n "K" #'lsp-ui-doc-glance)
 
 (load! "+bindings")
 (load! "+org")

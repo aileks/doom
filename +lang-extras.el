@@ -4,9 +4,9 @@
               indent-tabs-mode nil)
 
 (add-hook! '(python-mode-hook python-ts-mode-hook
-            c-mode-hook c-ts-mode-hook c++-mode-hook c++-ts-mode-hook
-            cuda-mode-hook cuda-ts-mode-hook
-            sql-mode-hook zig-mode-hook zig-ts-mode-hook)
+             c-mode-hook c-ts-mode-hook c++-mode-hook c++-ts-mode-hook
+             cuda-mode-hook cuda-ts-mode-hook
+             sql-mode-hook zig-mode-hook zig-ts-mode-hook)
   (setq-local tab-width 4))
 
 (add-hook 'c-mode-common-hook
@@ -37,6 +37,15 @@
 (after! apheleia
   (setf (alist-get 'python-mode apheleia-mode-alist) '(ruff-isort ruff)
         (alist-get 'python-ts-mode apheleia-mode-alist) '(ruff-isort ruff)))
+
+(after! lsp-java
+  (setq lsp-java-vmargs
+        '("-XX:+UseParallelGC" "-XX:GCTimeRatio=4"
+          "-XX:AdaptiveSizePolicyWeight=90" "-Dsun.zip.disableMemoryMapping=true"
+          "-Xmx1G" "-Xms100m"))
+  (setq lsp-java-import-maven-enabled t))
+
+(set-formatter! 'google-java-format "google-java-format -" :modes '(java-mode))
 
 (set-formatter! 'prettier :modes '(markdown-mode gfm-mode))
 
