@@ -45,10 +45,19 @@
 (after! corfu
   (setq corfu-count 10))
 
-
 (after! evil-escape
   (setq evil-escape-key-sequence "jk"
         evil-escape-delay 0.15))
+
+(after! lsp-ui
+  (setq lsp-ui-doc-enable t
+        lsp-ui-doc-use-childframe t
+        lsp-ui-doc-position 'at-point
+        lsp-ui-doc-delay 0.2
+        lsp-ui-doc-max-width 120
+        lsp-ui-doc-max-height 30))
+
+(map! :n "K" #'lsp-ui-doc-glance)
 
 (load! "+bindings")
 (load! "+org")

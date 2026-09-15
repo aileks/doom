@@ -49,7 +49,7 @@
  editorconfig
  (eval +overlay)
  lookup
- lsp
+ (lsp +peek)
  magit
  tree-sitter
  (debugger +lsp)
