@@ -44,3 +44,14 @@
 (load! "+dbt")
 (load! "+lang-extras")
 (load! "+tasks")
+
+(after! lsp-ui
+  (setq
+   lsp-ui-doc-enable t
+   lsp-ui-doc-use-childframe t
+   lsp-ui-doc-show-with-cursor t
+   lsp-ui-doc-position 'at-point
+   lsp-ui-doc-delay 0.4))
+
+(after! lsp-mode
+  (add-hook 'lsp-mode-hook #'lsp-ui-mode))
