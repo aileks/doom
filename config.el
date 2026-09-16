@@ -20,11 +20,6 @@
 
 (setq-default truncate-lines nil)
 
-(use-package! lsp-java-boot
-  :after lsp-java
-  :hook ((lsp-mode . lsp-lens-mode)
-         (java-mode . lsp-java-boot-lens-mode)))
-
 (after! dap-mode
   (require 'dap-java)
   (setq dap-java-test-runner
@@ -38,20 +33,24 @@
   (setq evil-escape-key-sequence "jk"
         evil-escape-delay 0.15))
 
-(load! "+bindings")
-(load! "+org")
-(load! "+sql")
-(load! "+dbt")
-(load! "+lang-extras")
-(load! "+tasks")
-
 (after! lsp-ui
   (setq
    lsp-ui-doc-enable t
    lsp-ui-doc-use-childframe t
    lsp-ui-doc-show-with-cursor t
    lsp-ui-doc-position 'at-point
-   lsp-ui-doc-delay 0.4))
+   lsp-ui-doc-delay 0.4
+   ;; DO NOT REMOVE
+   ;; some hovers are MarkedString lists
+   ;; this prevents lsp-ui's from dropping them
+   lsp-ui-doc-include-signature t))
 
 (after! lsp-mode
   (add-hook 'lsp-mode-hook #'lsp-ui-mode))
+
+(load! "+bindings")
+(load! "+org")
+(load! "+sql")
+(load! "+dbt")
+(load! "+lang-extras")
+(load! "+tasks")

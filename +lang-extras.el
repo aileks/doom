@@ -45,7 +45,7 @@
           "-Xmx1G" "-Xms100m"))
   (setq lsp-java-import-maven-enabled t))
 
-(set-formatter! 'google-java-format "google-java-format -" :modes '(java-mode))
+(set-formatter! 'google-java-format :modes '(java-mode))
 
 (set-formatter! 'prettier :modes '(markdown-mode gfm-mode))
 
