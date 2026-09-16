@@ -45,4 +45,15 @@
 
   (setq org-id-link-to-org-use-id 'create-if-interactive)
 
-  (setq org-confirm-babel-evaluate t))
+  (setq org-confirm-babel-evaluate t)
+
+  (add-hook 'org-mode-hook #'org-modern-mode)
+  (add-hook 'org-mode-hook #'org-appear-mode)
+  (setq org-hide-emphasis-markers t
+        org-ellipsis " ▾ ")
+
+  (custom-theme-set-faces! 'user
+    '(org-document-title :height 1.3)
+    '(org-level-1 :height 1.2)
+    '(org-level-2 :height 1.1)
+    '(org-level-3 :height 1.0)))

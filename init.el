@@ -61,7 +61,7 @@
  (json +lsp +tree-sitter)
  (lua +lsp +tree-sitter)
  markdown
- org
+ (org +pretty)
  (python +lsp +pyright +tree-sitter +uv)
  (sh +lsp)
  (yaml +lsp +tree-sitter)
