@@ -53,7 +53,20 @@
         org-ellipsis " ▾ ")
 
   (custom-theme-set-faces! 'user
+    ;; document header and headings
     '(org-document-title :height 1.3)
+    '(org-document-info :height 1.1)
     '(org-level-1 :height 1.2)
     '(org-level-2 :height 1.1)
-    '(org-level-3 :height 1.0)))
+    '(org-level-3 :height 1.0)
+    ;; keyword faces that sit inline with task text
+    '(org-todo :height 1.1)
+    '(org-done :height 1.1)
+    '(org-priority :height 1.1)
+    '(org-checkbox :height 1.1)
+    '(org-date :height 1.1)
+    '(org-special-keyword :height 1.1)
+    ;; agenda buffer
+    '(org-agenda-structure :height 1.15)
+    '(org-agenda-date :height 1.1)
+    '(org-agenda-date-today :height 1.1)))
