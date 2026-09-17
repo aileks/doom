@@ -1,7 +1,5 @@
 ;;; config.el -*- lexical-binding: t; -*-
 
-(add-to-list 'default-frame-alist '(alpha-background . 97))
-
 (setq org-directory "~/org")
 
 (setq doom-theme 'cinder-grove
