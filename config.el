@@ -2,12 +2,8 @@
 
 (setq org-directory "~/org")
 
-(setq doom-theme 'cinder-grove
-      cg-transparent t
+(setq doom-theme 'cinder-muted
       doom-font (font-spec :family "Iosevka Nerd Font" :size 18))
-
-(when-let* ((theme-file (locate-library "cinder-grove-theme.el")))
-  (add-to-list 'custom-theme-load-path (file-name-directory theme-file)))
 
 (after! solaire-mode (solaire-global-mode -1))
 
