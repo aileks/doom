@@ -13,7 +13,6 @@
           (defun +lang-extras--c-indent-h ()
             (setq-local c-basic-offset 4)))
 
-;; Java uses google-java-format (Google Style), so indent at 2 to match.
 (add-hook! 'java-mode-hook
   (setq-local c-basic-offset 2))
 

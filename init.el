@@ -21,6 +21,7 @@
  vi-tilde-fringe
  window-select
  workspaces
+ ligatures
 
  :editor
  (evil +everywhere)
