@@ -2,7 +2,7 @@
 
 (setq org-directory "~/org")
 
-(setq doom-theme 'cinder-muted
+(setq doom-theme 'muted-umber
       doom-font (font-spec :family "Iosevka Nerd Font" :size 18))
 
 (after! solaire-mode (solaire-global-mode -1))
