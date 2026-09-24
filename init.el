@@ -20,14 +20,14 @@
  (vc-gutter +pretty)
  vi-tilde-fringe
  window-select
- workspaces
  ligatures
+ zen
 
  :editor
  (evil +everywhere)
+ (format +onsave)
  file-templates
  fold
- (format +onsave)
  multiple-cursors
  snippets
  word-wrap
@@ -47,13 +47,13 @@
  syntax
 
  :tools
- editorconfig
  (eval +overlay)
- lookup
  (lsp +peek)
+ (debugger +lsp)
+ editorconfig
+ lookup
  magit
  tree-sitter
- (debugger +lsp)
  direnv
 
  :lang

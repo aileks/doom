@@ -1,5 +1,13 @@
 ;;; +org.el -*- lexical-binding: t; -*-
 
+
+(defun my/org-pretty-buffer-h ()
+  "Make Org buffers feel more like polished documents."
+  (setq-local line-spacing 0.16)
+  (visual-line-mode 1)
+  (variable-pitch-mode 1)
+  (display-line-numbers-mode -1))
+
 (after! org
   (setq org-todo-keywords
         '((sequence "TODO(t)" "NEXT(n)" "WAIT(w)" "|" "DONE(d)" "CANCELLED(c)"))
@@ -44,29 +52,214 @@
   (org-clock-persistence-insinuate)
 
   (setq org-id-link-to-org-use-id 'create-if-interactive)
-
   (setq org-confirm-babel-evaluate t)
 
+  (setq org-hide-emphasis-markers t
+        org-pretty-entities t
+        org-pretty-entities-include-sub-superscripts nil
+        org-highlight-latex-and-related '(native script entities)
+        org-fontify-done-headline t
+        org-fontify-quote-and-verse-blocks t
+        org-fontify-whole-heading-line t
+        org-src-fontify-natively t
+        org-src-tab-acts-natively t
+        org-image-actual-width nil
+        org-tags-column 0
+        org-auto-align-tags nil
+        org-ellipsis "  …"
+        org-startup-indented nil
+        org-hide-leading-stars nil)
+
+  (setq org-agenda-tags-column 0
+        org-agenda-block-separator ?─
+        org-agenda-current-time-string "  ◀ now ─────────────────────────"
+        org-agenda-time-grid
+        '((daily today require-timed)
+          (800 1000 1200 1400 1600 1800 2000)
+          "  ┄┄┄┄┄ "
+          "┄┄┄┄┄┄┄┄┄┄"))
+
+  (add-hook 'org-mode-hook #'my/org-pretty-buffer-h)
   (add-hook 'org-mode-hook #'org-modern-mode)
   (add-hook 'org-mode-hook #'org-appear-mode)
-  (setq org-hide-emphasis-markers t
-        org-ellipsis " ▾ ")
 
   (custom-theme-set-faces! 'user
-    ;; document header and headings
-    '(org-document-title :height 1.3)
-    '(org-document-info :height 1.1)
-    '(org-level-1 :height 1.2)
-    '(org-level-2 :height 1.1)
-    '(org-level-3 :height 1.0)
-    ;; keyword faces that sit inline with task text
-    '(org-todo :height 1.1)
-    '(org-done :height 1.1)
-    '(org-priority :height 1.1)
-    '(org-checkbox :height 1.1)
-    '(org-date :height 1.1)
-    '(org-special-keyword :height 1.1)
-    ;; agenda buffer
-    '(org-agenda-structure :height 1.15)
-    '(org-agenda-date :height 1.1)
-    '(org-agenda-date-today :height 1.1)))
+    '(org-document-title
+      :inherit (variable-pitch font-lock-keyword-face)
+      :height 1.75 :weight bold)
+    '(org-document-info
+      :inherit (variable-pitch shadow)
+      :height 1.05)
+    '(org-document-info-keyword
+      :inherit (fixed-pitch font-lock-comment-face)
+      :height 0.9)
+
+    '(org-level-1
+      :inherit (variable-pitch font-lock-keyword-face)
+      :height 1.45 :weight bold)
+    '(org-level-2
+      :inherit (variable-pitch font-lock-function-name-face)
+      :height 1.30 :weight bold)
+    '(org-level-3
+      :inherit (variable-pitch font-lock-type-face)
+      :height 1.20 :weight bold)
+    '(org-level-4
+      :inherit (variable-pitch font-lock-variable-name-face)
+      :height 1.12 :weight semi-bold)
+    '(org-level-5
+      :inherit (variable-pitch font-lock-constant-face)
+      :height 1.06 :weight semi-bold)
+    '(org-level-6
+      :inherit (variable-pitch font-lock-builtin-face)
+      :height 1.03 :weight semi-bold)
+    '(org-level-7
+      :inherit (variable-pitch font-lock-string-face)
+      :height 1.0 :weight semi-bold)
+    '(org-level-8
+      :inherit (variable-pitch font-lock-doc-face)
+      :height 1.0 :weight semi-bold)
+
+    '(org-link :inherit link :weight semi-bold)
+    '(org-date :inherit (fixed-pitch font-lock-constant-face) :height 0.95)
+    '(org-tag :inherit (fixed-pitch shadow) :height 0.85 :weight bold)
+    '(org-todo :inherit fixed-pitch :weight bold)
+    '(org-done :inherit fixed-pitch :weight bold)
+    '(org-priority :inherit (fixed-pitch font-lock-warning-face) :weight bold)
+    '(org-checkbox :inherit (fixed-pitch font-lock-builtin-face) :weight bold)
+    '(org-special-keyword :inherit (fixed-pitch font-lock-comment-face) :height 0.9)
+    '(org-meta-line :inherit (fixed-pitch font-lock-comment-face) :height 0.9)
+    '(org-drawer :inherit (fixed-pitch shadow) :height 0.9)
+    '(org-property-value :inherit (fixed-pitch font-lock-string-face))
+
+    '(org-code :inherit (fixed-pitch font-lock-constant-face))
+    '(org-verbatim :inherit (fixed-pitch font-lock-string-face))
+    '(org-table :inherit fixed-pitch)
+    '(org-formula :inherit (fixed-pitch font-lock-function-name-face))
+    '(org-block :inherit fixed-pitch :extend t)
+    '(org-block-begin-line
+      :inherit (fixed-pitch font-lock-comment-face)
+      :height 0.85 :slant italic :extend t)
+    '(org-block-end-line
+      :inherit (fixed-pitch font-lock-comment-face)
+      :height 0.85 :slant italic :extend t)
+
+    '(org-quote :inherit variable-pitch :slant italic)
+    '(org-verse :inherit variable-pitch :slant italic)
+    '(org-footnote :inherit (fixed-pitch font-lock-comment-face) :height 0.9)
+    '(org-latex-and-related :inherit font-lock-string-face)))
+
+(after! org-modern
+  (setq org-modern-label-border 0.18
+        org-modern-star 'replace
+        org-modern-replace-stars '("" "○" "✸" "✿")
+        org-modern-cycle-stars t
+        org-modern-hide-stars ?\s
+
+        org-modern-list
+        '((?- . "•")
+          (?+ . "◦")
+          (?* . "▪"))
+        org-modern-checkbox
+        '((?X . "☑")
+          (?- . "◩")
+          (?\s . "☐"))
+
+        org-modern-todo t
+        org-modern-tag t
+        org-modern-priority t
+        org-modern-timestamp t
+        org-modern-progress 14
+        org-modern-internal-target '(" 󱞩 " t " ")
+        org-modern-radio-target '(" ◉ " t " ")
+
+        org-modern-table t
+        org-modern-table-vertical 2
+        org-modern-table-horizontal 0.12
+        org-modern-horizontal-rule
+        "────────────────────────────────────────────────────────"
+
+        org-modern-keyword
+        '(("title" . "   ")
+          ("subtitle" . "   ")
+          ("author" . "  ✎ ")
+          ("email" . "   ")
+          ("date" . "   ")
+          ("filetags" . "   ")
+          ("startup" . "   ")
+          ("options" . "   ")
+          ("property" . "  󰠱 ")
+          ("name" . "   ")
+          ("caption" . "  󰅞 ")
+          ("results" . "   ")
+          (t . "   "))
+
+        org-modern-block-name
+        '(("src" "╭─" "╰─")
+          ("example" "╭┄" "╰┄")
+          ("quote" "╭❝" "╰❞")
+          ("verse" "╭♪" "╰♪")
+          ("export" "╭»" "╰«")
+          (t "╭─" "╰─"))
+        org-modern-block-fringe 3
+
+        org-modern-priority-faces
+        '((?A . error)
+          (?B . warning)
+          (?C . success))
+        org-modern-todo-faces
+        '(("TODO" . warning)
+          ("NEXT" . success)
+          ("WAIT" . font-lock-constant-face)
+          ("DONE" . success)
+          ("CANCELLED" . shadow)))
+
+  (add-hook 'org-agenda-finalize-hook #'org-modern-agenda)
+
+  (custom-theme-set-faces! 'user
+    '(org-modern-symbol :weight bold)
+    '(org-modern-block-name
+      :inherit (fixed-pitch font-lock-comment-face)
+      :height 0.85 :weight semi-bold)
+    '(org-modern-tag :inherit (fixed-pitch secondary-selection) :weight semi-bold)
+    '(org-modern-priority :inherit fixed-pitch :weight bold)
+    '(org-modern-todo :inherit (fixed-pitch org-todo) :weight bold)
+    '(org-modern-done :inherit (fixed-pitch org-done) :weight bold)
+    '(org-modern-date-active :inherit (fixed-pitch org-date) :weight semi-bold)
+    '(org-modern-date-inactive :inherit (fixed-pitch shadow) :weight semi-bold)
+    '(org-modern-time-active :inherit (fixed-pitch org-date) :weight semi-bold)
+    '(org-modern-time-inactive :inherit (fixed-pitch shadow) :weight semi-bold)
+    '(org-modern-horizontal-rule :inherit shadow)
+    '(org-modern-internal-target :inherit (fixed-pitch font-lock-constant-face))
+    '(org-modern-radio-target :inherit (fixed-pitch font-lock-keyword-face))))
+
+(after! org-appear
+  (setq org-appear-autoemphasis t
+        org-appear-autolinks t
+        org-appear-autosubmarkers t
+        org-appear-autoentities t
+        org-appear-autokeywords t
+        org-appear-inside-latex t
+        org-appear-delay 0.05))
+
+(after! org-agenda
+  (custom-theme-set-faces! 'user
+    '(org-agenda-structure
+      :inherit (variable-pitch font-lock-keyword-face)
+      :height 1.30 :weight bold)
+    '(org-agenda-date
+      :inherit (variable-pitch font-lock-function-name-face)
+      :height 1.12 :weight bold)
+    '(org-agenda-date-today
+      :inherit (variable-pitch font-lock-keyword-face)
+      :height 1.20 :weight bold :slant normal)
+    '(org-agenda-date-weekend
+      :inherit (variable-pitch font-lock-comment-face)
+      :height 1.08 :weight semi-bold)
+    '(org-agenda-current-time
+      :inherit (fixed-pitch font-lock-warning-face)
+      :weight bold)
+    '(org-agenda-done :inherit shadow)
+    '(org-agenda-dimmed-todo-face :inherit shadow)
+    '(org-agenda-clocking
+      :inherit (fixed-pitch font-lock-constant-face)
+      :weight semi-bold)))

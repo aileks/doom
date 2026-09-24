@@ -34,13 +34,18 @@
    lsp-ui-doc-show-with-cursor t
    lsp-ui-doc-position 'at-point
    lsp-ui-doc-delay 0.4
-   ;; DO NOT REMOVE
-   ;; some hovers are MarkedString lists
-   ;; this prevents lsp-ui's from dropping them
    lsp-ui-doc-include-signature t))
 
 (after! lsp-mode
   (add-hook 'lsp-mode-hook #'lsp-ui-mode))
+
+(after! writeroom-mode
+  (setq writeroom-width 100
+        +zen-text-scale 1.05))
+
+(after! org
+  (setq org-src-fontify-natively t
+        org-src-tab-acts-natively t))
 
 (load! "+bindings")
 (load! "+org")
