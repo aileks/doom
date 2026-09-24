@@ -67,7 +67,7 @@
         org-tags-column 0
         org-auto-align-tags nil
         org-ellipsis "  …"
-        org-startup-indented nil
+        org-startup-indented t
         org-hide-leading-stars nil)
 
   (setq org-agenda-tags-column 0
@@ -84,15 +84,10 @@
   (add-hook 'org-mode-hook #'org-appear-mode)
 
   (custom-theme-set-faces! 'user
-    '(org-document-title
-      :inherit (variable-pitch font-lock-keyword-face)
-      :height 1.75 :weight bold)
-    '(org-document-info
-      :inherit (variable-pitch shadow)
-      :height 1.05)
-    '(org-document-info-keyword
+    '((org-document-title org-document-info org-document-info-keyword)
       :inherit (fixed-pitch font-lock-comment-face)
-      :height 0.9)
+      :height 0.9 :weight normal)
+    '(org-indent :inherit (org-hide fixed-pitch))
 
     '(org-level-1
       :inherit (variable-pitch font-lock-keyword-face)
@@ -151,14 +146,14 @@
 (after! org-modern
   (setq org-modern-label-border 0.18
         org-modern-star 'replace
-        org-modern-replace-stars '("" "○" "✸" "✿")
+        org-modern-replace-stars '("◆" "○" "✸" "✿")
         org-modern-cycle-stars t
         org-modern-hide-stars ?\s
 
         org-modern-list
-        '((?- . "•")
-          (?+ . "◦")
-          (?* . "▪"))
+        `((?- . ,(propertize "• " 'face 'org-modern-symbol))
+          (?+ . ,(propertize "◦ " 'face 'org-modern-symbol))
+          (?* . ,(propertize "▪ " 'face 'org-modern-symbol)))
         org-modern-checkbox
         '((?X . "☑")
           (?- . "◩")
@@ -178,20 +173,7 @@
         org-modern-horizontal-rule
         "────────────────────────────────────────────────────────"
 
-        org-modern-keyword
-        '(("title" . "   ")
-          ("subtitle" . "   ")
-          ("author" . "  ✎ ")
-          ("email" . "   ")
-          ("date" . "   ")
-          ("filetags" . "   ")
-          ("startup" . "   ")
-          ("options" . "   ")
-          ("property" . "  󰠱 ")
-          ("name" . "   ")
-          ("caption" . "  󰅞 ")
-          ("results" . "   ")
-          (t . "   "))
+        org-modern-keyword nil
 
         org-modern-block-name
         '(("src" "╭─" "╰─")
@@ -200,7 +182,7 @@
           ("verse" "╭♪" "╰♪")
           ("export" "╭»" "╰«")
           (t "╭─" "╰─"))
-        org-modern-block-fringe 3
+        org-modern-block-fringe nil
 
         org-modern-priority-faces
         '((?A . error)
@@ -216,7 +198,7 @@
   (add-hook 'org-agenda-finalize-hook #'org-modern-agenda)
 
   (custom-theme-set-faces! 'user
-    '(org-modern-symbol :weight bold)
+    '(org-modern-symbol :family "Iosevka Nerd Font" :weight normal)
     '(org-modern-block-name
       :inherit (fixed-pitch font-lock-comment-face)
       :height 0.85 :weight semi-bold)
