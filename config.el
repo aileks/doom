@@ -3,7 +3,7 @@
 (setq org-directory "~/org")
 
 (setq doom-theme 'muted-umber
-      doom-font (font-spec :family "Iosevka Nerd Font" :size 18))
+      doom-font (font-spec :family "Iosevka Nerd Font" :size 20))
 
 (after! solaire-mode (solaire-global-mode -1))
 
