@@ -11,8 +11,9 @@ doom sync
 
 ## Custom Keybinds
 
-| Key | Action |
-| --- | --- |
-| `jk` | Escape |
-| `SPC f t` | Search project TODO comments |
-| `SPC p t` | Project task menu |
+| Key       | Action                        |
+| --------- | ----------------------------- |
+| `jk`      | Escape                        |
+| `g RET`   | New line while in normal mode |
+| `SPC f t` | Search project TODO comments  |
+| `SPC p t` | Project task menu             |

@@ -14,6 +14,45 @@
 
 (setq-default truncate-lines nil)
 
+(defconst +todo-comment-keywords
+  '("TODO" "NEXT" "WAIT" "FIXME" "BUG" "HACK" "WARN" "PERF" "NOTE" "TEST")
+  "Keywords searched by `+todo/search'.")
+
+(when (modulep! :completion vertico)
+  (defun +todo/search ()
+    "Search TODO-style keywords in the current project."
+    (interactive)
+    (+vertico/project-search
+     nil
+     (regexp-opt +todo-comment-keywords 'words)
+     (or (projectile-project-root) default-directory))))
+
+(after! evil
+  (setq evil-kill-on-visual-paste nil)
+
+  (evil-define-command +evil-scroll-down-centered (count)
+    "Scroll half a page down, then center the cursor line."
+    (interactive "<c>")
+    (evil-scroll-down count)
+    (recenter))
+  (evil-define-command +evil-scroll-up-centered (count)
+    "Scroll half a page up, then center the cursor line."
+    (interactive "<c>")
+    (evil-scroll-up count)
+    (recenter))
+
+  (evil-define-motion +evil-search-next-centered (count)
+    "Go to the next search match, centering the match line."
+    :jump t
+    (evil-ex-search-next count)
+    (recenter))
+  (evil-define-motion +evil-search-previous-centered (count)
+    "Go to the previous search match, centering the match line."
+    :jump t
+    (evil-ex-search-previous count)
+    (recenter)))
+
+
 (after! dap-mode
   (require 'dap-java)
   (setq dap-java-test-runner
