@@ -80,7 +80,8 @@
 
 (after! writeroom-mode
   (setq writeroom-width 100
-        +zen-text-scale 1.05))
+        +zen-text-scale 1.05
+        +zen-mixed-pitch-modes (remq 'markdown-mode +zen-mixed-pitch-modes)))
 
 (after! org
   (setq org-src-fontify-natively t
