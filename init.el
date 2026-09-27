@@ -25,7 +25,7 @@
 
  :editor
  (evil +everywhere)
- (format +onsave)
+ (format +onsave +lsp)
  file-templates
  fold
  multiple-cursors
