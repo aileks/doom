@@ -58,16 +58,16 @@
 
  :lang
  emacs-lisp
+ markdown
+ (ess +lsp)
+ (julia +lsp)
  (cc +lsp +tree-sitter)
  (json +lsp +tree-sitter)
  (lua +lsp +tree-sitter)
- markdown
  (org +pretty)
  (python +lsp +pyright +tree-sitter +uv)
  (sh +lsp)
  (yaml +lsp +tree-sitter)
- (zig +lsp +tree-sitter)
- (java +lsp)
 
  :config
  (default +bindings +smartparens))

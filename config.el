@@ -52,13 +52,6 @@
     (evil-ex-search-previous count)
     (recenter)))
 
-
-(after! dap-mode
-  (require 'dap-java)
-  (setq dap-java-test-runner
-        (expand-file-name "test-runner/junit-platform-console-standalone.jar"
-                          lsp-java-server-install-dir)))
-
 (after! corfu
   (setq corfu-count 10))
 

@@ -13,9 +13,6 @@
           (defun +lang-extras--c-indent-h ()
             (setq-local c-basic-offset 4)))
 
-(add-hook! 'java-mode-hook
-  (setq-local c-basic-offset 2))
-
 (setq-hook! '(c-ts-mode-hook c++-ts-mode-hook cuda-ts-mode-hook)
   c-ts-mode-indent-offset 4)
 
@@ -40,15 +37,6 @@
 (after! apheleia
   (setf (alist-get 'python-mode apheleia-mode-alist) '(ruff-isort ruff)
         (alist-get 'python-ts-mode apheleia-mode-alist) '(ruff-isort ruff)))
-
-(after! lsp-java
-  (setq lsp-java-vmargs
-        '("-XX:+UseParallelGC" "-XX:GCTimeRatio=4"
-          "-XX:AdaptiveSizePolicyWeight=90" "-Dsun.zip.disableMemoryMapping=true"
-          "-Xmx1G" "-Xms100m"))
-  (setq lsp-java-import-maven-enabled t))
-
-(set-formatter! 'google-java-format :modes '(java-mode))
 
 (set-formatter! 'prettier :modes '(markdown-mode gfm-mode))
 
