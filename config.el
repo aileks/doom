@@ -69,7 +69,9 @@
    lsp-ui-doc-include-signature t))
 
 (after! lsp-mode
-  (add-hook 'lsp-mode-hook #'lsp-ui-mode))
+  (add-hook 'lsp-mode-hook #'lsp-ui-mode)
+  (lsp-register-custom-settings
+   '(("julia.lint.missingrefs" "symbols"))))
 
 (after! writeroom-mode
   (setq writeroom-width 100
