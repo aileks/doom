@@ -4,16 +4,14 @@
               indent-tabs-mode nil)
 
 (add-hook! '(python-mode-hook python-ts-mode-hook
-             c-mode-hook c-ts-mode-hook c++-mode-hook c++-ts-mode-hook
-             cuda-mode-hook cuda-ts-mode-hook
-             sql-mode-hook zig-mode-hook zig-ts-mode-hook)
+             c-mode-hook c-ts-mode-hook c++-mode-hook c++-ts-mode-hook)
   (setq-local tab-width 4))
 
 (add-hook 'c-mode-common-hook
           (defun +lang-extras--c-indent-h ()
             (setq-local c-basic-offset 4)))
 
-(setq-hook! '(c-ts-mode-hook c++-ts-mode-hook cuda-ts-mode-hook)
+(setq-hook! '(c-ts-mode-hook c++-ts-mode-hook)
   c-ts-mode-indent-offset 4)
 
 (after! lsp-clangd

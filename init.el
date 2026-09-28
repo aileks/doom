@@ -60,6 +60,7 @@
  emacs-lisp
  markdown
  (ess +lsp)
+ (javascript +lsp)
  (julia +lsp)
  (cc +lsp +tree-sitter)
  (json +lsp +tree-sitter)
@@ -67,6 +68,7 @@
  (org +pretty)
  (python +lsp +pyright +tree-sitter +uv)
  (sh +lsp)
+ web
  (yaml +lsp +tree-sitter)
 
  :config
