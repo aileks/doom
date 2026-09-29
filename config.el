@@ -5,6 +5,9 @@
 (setq doom-theme 'muted-umber
       doom-font (font-spec :family "Iosevka Nerd Font" :size 20))
 
+(setq-default fill-column 100)
+(add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
+
 (after! solaire-mode (solaire-global-mode -1))
 
 (setq display-line-numbers-type 'relative
@@ -70,6 +73,9 @@
 
 (after! lsp-mode
   (add-hook 'lsp-mode-hook #'lsp-ui-mode))
+
+(after! lsp-julia
+  (setq lsp-julia-lint-missingrefs "none"))
 
 (after! writeroom-mode
   (setq writeroom-width 100
