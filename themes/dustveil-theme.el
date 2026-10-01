@@ -15,7 +15,7 @@
 (defconst dustveil-surface "#1b1917")
 (defconst dustveil-accent "#978e86")
 (defconst dustveil-border "#7b726b")
-(defconst dustveil-syntax-comment "#8a8179")
+(defconst dustveil-syntax-comment "#898078")
 (defconst dustveil-syntax-punctuation "#978e86")
 (defconst dustveil-syntax-literal "#aaa198")
 (defconst dustveil-syntax-variable "#c1b8af")

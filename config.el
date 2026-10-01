@@ -100,22 +100,28 @@
   (add-hook 'lsp-mode-hook #'lsp-ui-mode)
   (require 'lsp-r))
 
-;; (use-package! r-ts-mode
-;;   :defer t
-;;   :hook (r-ts-mode . lsp!)
-;;   :init
-;;   (setq r-ts-mode-inherit-ess t)
-;;   (set-tree-sitter! 'ess-r-mode 'r-ts-mode 'r))
+(after! lsp-semantic-tokens
+  (setf (alist-get "declaration"
+                   (default-value 'lsp-semantic-token-modifier-faces)
+                   nil nil #'equal)
+        nil))
 
-;; (after! lsp-r
-;;   (add-to-list 'lsp-language-id-configuration
-;;                '(r-ts-mode . "r"))
-;;   (lsp-register-client
-;;    (make-lsp-client
-;;     :new-connection
-;;     (lsp-stdio-connection lsp-clients-r-server-command)
-;;     :major-modes '(ess-r-mode r-ts-mode)
-;;     :server-id 'lsp-r)))
+(use-package! r-ts-mode
+  :defer t
+  :hook (r-ts-mode . lsp!)
+  :init
+  (setq r-ts-mode-inherit-ess t)
+  (set-tree-sitter! 'ess-r-mode 'r-ts-mode 'r))
+
+(after! lsp-r
+  (add-to-list 'lsp-language-id-configuration
+               '(r-ts-mode . "r"))
+  (lsp-register-client
+   (make-lsp-client
+    :new-connection
+    (lsp-stdio-connection lsp-clients-r-server-command)
+    :major-modes '(ess-r-mode r-ts-mode)
+    :server-id 'lsp-r)))
 
 (after! lsp-julia
   (setq lsp-julia-lint-missingrefs "none"))

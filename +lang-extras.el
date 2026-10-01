@@ -14,6 +14,38 @@
 (setq-hook! '(c-ts-mode-hook c++-ts-mode-hook)
   c-ts-mode-indent-offset 4)
 
+(defvar-local +julia--treesit-font-lock-added nil)
+
+(defun +julia--treesit-font-lock-h ()
+  "Highlight Julia calls, variable uses, properties, and punctuation."
+  (unless +julia--treesit-font-lock-added
+    (setq-local treesit-font-lock-settings
+                (append
+                 treesit-font-lock-settings
+                 (treesit-font-lock-rules
+                  :language 'julia :feature 'dustveil-syntax :override nil
+                  '((call_expression
+                     [(identifier) (operator)] @font-lock-function-call-face)
+                    (call_expression
+                     (field_expression "."
+                                       [(identifier) (operator)] @font-lock-function-call-face))
+                    (call_expression
+                     (parenthesized_expression
+                      [(identifier) (operator)] @font-lock-function-call-face))
+                    (field_expression "." (identifier) @font-lock-property-use-face)
+                    (["(" ")" "[" "]" "{" "}" "," ";"] @font-lock-punctuation-face))
+                  :language 'julia :feature 'dustveil-variables :override nil
+                  '((identifier) @font-lock-variable-use-face)))
+                treesit-font-lock-feature-list
+                (copy-tree treesit-font-lock-feature-list))
+    (cl-pushnew 'dustveil-syntax (nth 2 treesit-font-lock-feature-list))
+    (cl-pushnew 'dustveil-variables (nth 2 treesit-font-lock-feature-list))
+    (treesit-font-lock-recompute-features)
+    (setq +julia--treesit-font-lock-added t)
+    (font-lock-flush)))
+
+(add-hook 'julia-ts-mode-hook #'+julia--treesit-font-lock-h)
+
 (defvar-local +ess-r--treesit-font-lock-added nil)
 
 (defun +ess-r--treesit-font-lock-h ()
