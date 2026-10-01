@@ -2,7 +2,7 @@
 
 (setq org-directory "~/org")
 
-(setq doom-theme 'muted-russet
+(setq doom-theme 'dustveil
       doom-font (font-spec :family "Iosevka Nerd Font" :size 20))
 
 (setq-default fill-column 100)

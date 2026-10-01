@@ -45,3 +45,11 @@
       '("-i" "2" "-ci" "-bn"))
     "-")
   :modes '(sh-mode bash-ts-mode))
+
+(after! lsp-semantic-tokens
+  ;; Several default modifiers reuse token faces and override variable colors.
+  (setq-default lsp-semantic-token-modifier-faces
+                '(("definition" . lsp-face-semhl-definition)
+                  ("implementation" . lsp-face-semhl-implementation)
+                  ("deprecated" . lsp-face-semhl-deprecated))))
+
