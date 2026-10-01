@@ -59,6 +59,7 @@
  :lang
  emacs-lisp
  markdown
+ web
  (ess +lsp)
  (javascript +lsp)
  (julia +lsp)
@@ -68,8 +69,8 @@
  (org +pretty)
  (python +lsp +pyright +tree-sitter +uv)
  (sh +lsp)
- web
  (yaml +lsp +tree-sitter)
+ (haskell +tree-sitter)
 
  :config
  (default +bindings +smartparens))
