@@ -47,9 +47,22 @@
   :modes '(sh-mode bash-ts-mode))
 
 (after! lsp-semantic-tokens
-  ;; Several default modifiers reuse token faces and override variable colors.
+  ;; Keep LSP modifiers from recoloring the shared syntax faces.
   (setq-default lsp-semantic-token-modifier-faces
-                '(("definition" . lsp-face-semhl-definition)
+                '(("declaration" . lsp-face-semhl-declaration)
+                  ("definition" . lsp-face-semhl-definition)
                   ("implementation" . lsp-face-semhl-implementation)
                   ("deprecated" . lsp-face-semhl-deprecated))))
 
+(after! r-ts-mode
+  (defun +lang-extras--r-font-lock-h ()
+    ;; R captures bindings but needs a fallback for ordinary identifier uses.
+    (setq-local treesit-font-lock-settings
+                (append
+                 r-ts-mode-settings
+                 (treesit-font-lock-rules
+                  :language 'r :feature 'variable :override nil
+                  '((identifier) @font-lock-variable-use-face))))
+    (treesit-font-lock-recompute-features)
+    (font-lock-flush))
+  (add-hook 'r-ts-mode-hook #'+lang-extras--r-font-lock-h))
