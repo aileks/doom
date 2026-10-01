@@ -60,9 +60,9 @@
  emacs-lisp
  markdown
  web
+ (javascript +lsp +tree-sitter)
  (ess +lsp)
- (javascript +lsp)
- (julia +lsp)
+ (julia +lsp +tree-sitter)
  (cc +lsp +tree-sitter)
  (json +lsp +tree-sitter)
  (lua +lsp +tree-sitter)

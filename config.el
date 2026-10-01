@@ -8,6 +8,13 @@
 (setq-default fill-column 100)
 (add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
 
+(use-package! r-ts-mode
+  :defer t
+  :hook (r-ts-mode . lsp!)
+  :init
+  (setq r-ts-mode-inherit-ess t)
+  (set-tree-sitter! 'ess-r-mode 'r-ts-mode 'r))
+
 (after! solaire-mode
   (solaire-global-mode -1))
 
@@ -73,7 +80,16 @@
    lsp-ui-doc-include-signature t))
 
 (after! lsp-mode
-  (add-hook 'lsp-mode-hook #'lsp-ui-mode))
+  (add-hook 'lsp-mode-hook #'lsp-ui-mode)
+  (add-to-list 'lsp-language-id-configuration
+               '(r-ts-mode . "r"))
+  (require 'lsp-r)
+  (lsp-register-client
+   (make-lsp-client
+    :new-connection
+    (lsp-stdio-connection lsp-clients-r-server-command)
+    :major-modes '(r-ts-mode)
+    :server-id 'lsp-r-ts)))
 
 (after! lsp-julia
   (setq lsp-julia-lint-missingrefs "none"))
