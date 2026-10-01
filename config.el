@@ -8,15 +8,14 @@
 (setq-default fill-column 100)
 (add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
 
-(use-package! r-ts-mode
-  :defer t
-  :hook (r-ts-mode . lsp!)
-  :init
-  (setq r-ts-mode-inherit-ess t)
-  (set-tree-sitter! 'ess-r-mode 'r-ts-mode 'r))
-
 (after! solaire-mode
   (solaire-global-mode -1))
+
+(after! vterm
+  (setq vterm-set-bold-highbright t))
+
+(after! ansi-color
+  (setq ansi-color-bold-is-bright t))
 
 (setq display-line-numbers-type 'relative
       scroll-margin 8
@@ -40,31 +39,48 @@
 
 (after! evil
   (setq evil-kill-on-visual-paste nil)
-
   (evil-define-command +evil-scroll-down-centered (count)
-    "Scroll half a page down, then center the cursor line."
     (interactive "<c>")
     (evil-scroll-down count)
     (recenter))
   (evil-define-command +evil-scroll-up-centered (count)
-    "Scroll half a page up, then center the cursor line."
     (interactive "<c>")
     (evil-scroll-up count)
     (recenter))
 
   (evil-define-motion +evil-search-next-centered (count)
-    "Go to the next search match, centering the match line."
     :jump t
     (evil-ex-search-next count)
     (recenter))
   (evil-define-motion +evil-search-previous-centered (count)
-    "Go to the previous search match, centering the match line."
     :jump t
     (evil-ex-search-previous count)
     (recenter)))
 
 (after! corfu
-  (setq corfu-count 10))
+  (setq corfu-count 10)
+  (defun +corfu--current-face-a (args)
+    (let ((current (nth 4 args)))
+      (when (and (memq 'dustveil custom-enabled-themes)
+                 (integerp current) (>= current 0))
+        (when-let* ((line (nth current (nth 3 args))))
+          (setq args (copy-sequence args))
+          (let ((lines (copy-sequence (nth 3 args)))
+                (line (copy-sequence line)))
+            (add-face-text-property 0 (length line) 'corfu-current nil line)
+            (setf (nth current lines) line
+                  (nth 3 args) lines)))))
+    args)
+  (advice-add 'corfu--popup-show :filter-args #'+corfu--current-face-a))
+
+(after! vertico
+  (defun +vertico--current-face-a (fn cand prefix suffix index start)
+    (let ((line (funcall fn cand prefix suffix index start)))
+      (when (and (memq 'dustveil custom-enabled-themes)
+                 (= index vertico--index))
+        (add-face-text-property 0 (length line) 'vertico-current nil line))
+      line))
+  (advice-add 'vertico--format-candidate :around #'+vertico--current-face-a))
 
 (after! evil-escape
   (setq evil-escape-key-sequence "jk"
@@ -80,16 +96,26 @@
    lsp-ui-doc-include-signature t))
 
 (after! lsp-mode
+  (setq lsp-semantic-tokens-enable t)
   (add-hook 'lsp-mode-hook #'lsp-ui-mode)
-  (add-to-list 'lsp-language-id-configuration
-               '(r-ts-mode . "r"))
-  (require 'lsp-r)
-  (lsp-register-client
-   (make-lsp-client
-    :new-connection
-    (lsp-stdio-connection lsp-clients-r-server-command)
-    :major-modes '(r-ts-mode)
-    :server-id 'lsp-r-ts)))
+  (require 'lsp-r))
+
+;; (use-package! r-ts-mode
+;;   :defer t
+;;   :hook (r-ts-mode . lsp!)
+;;   :init
+;;   (setq r-ts-mode-inherit-ess t)
+;;   (set-tree-sitter! 'ess-r-mode 'r-ts-mode 'r))
+
+;; (after! lsp-r
+;;   (add-to-list 'lsp-language-id-configuration
+;;                '(r-ts-mode . "r"))
+;;   (lsp-register-client
+;;    (make-lsp-client
+;;     :new-connection
+;;     (lsp-stdio-connection lsp-clients-r-server-command)
+;;     :major-modes '(ess-r-mode r-ts-mode)
+;;     :server-id 'lsp-r)))
 
 (after! lsp-julia
   (setq lsp-julia-lint-missingrefs "none"))
