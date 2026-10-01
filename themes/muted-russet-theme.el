@@ -167,8 +167,8 @@ Popup faces retain explicit backgrounds.  Reload the theme with
  `(doom-modeline-input-method ((t (:foreground ,muted-russet-text-subtle))))
 
  ;; --- solaire (secondary buffers) ---------------------------------------------------
- `(solaire-default-face ((t (:inherit default :background ,muted-russet-surface))))
- `(solaire-fringe-face ((t (:inherit fringe :background ,muted-russet-surface))))
+ `(solaire-default-face ((t (:inherit default))))
+ `(solaire-fringe-face ((t (:inherit fringe))))
  `(solaire-header-line-face ((t (:inherit header-line
                                 :background ,muted-russet-surface))))
  `(solaire-hl-line-face ((t (:inherit hl-line :background ,muted-russet-surface))))
