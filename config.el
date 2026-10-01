@@ -2,13 +2,14 @@
 
 (setq org-directory "~/org")
 
-(setq doom-theme 'muted-umber
+(setq doom-theme 'muted-russet
       doom-font (font-spec :family "Iosevka Nerd Font" :size 20))
 
 (setq-default fill-column 100)
 (add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
 
-(after! solaire-mode (solaire-global-mode -1))
+(after! solaire-mode
+  (solaire-global-mode -1))
 
 (setq display-line-numbers-type 'relative
       scroll-margin 8
