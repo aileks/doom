@@ -10,33 +10,35 @@
   :group 'faces
   :prefix "dustveil-")
 
-(defconst dustveil-foreground "#f3f3f3")
+(defconst dustveil-foreground "#f1e6dc")
 (defconst dustveil-background "#090909")
 (defconst dustveil-surface "#1b1917")
-(defconst dustveil-accent "#978e86")
-(defconst dustveil-border "#7b726b")
-(defconst dustveil-syntax-comment "#898078")
-(defconst dustveil-syntax-punctuation "#978e86")
-(defconst dustveil-syntax-literal "#aaa198")
-(defconst dustveil-syntax-variable "#c1b8af")
-(defconst dustveil-syntax-keyword "#e0d7ce")
-(defconst dustveil-syntax-function "#fcf2e9")
-(defconst dustveil-color-0 "#8a8179")
-(defconst dustveil-color-1 "#8c837b")
-(defconst dustveil-color-2 "#978e86")
-(defconst dustveil-color-3 "#aaa198")
-(defconst dustveil-color-4 "#8b827a")
-(defconst dustveil-color-5 "#8e857d")
-(defconst dustveil-color-6 "#9e958d")
+(defconst dustveil-accent "#aaa19a")
+(defconst dustveil-border "#898078")
+(defconst dustveil-secondary "#898078")
+(defconst dustveil-separator "#504b47")
+(defconst dustveil-syntax-comment "#665F5A")
+(defconst dustveil-syntax-punctuation "#aaa19a")
+(defconst dustveil-syntax-literal "#aaa19a")
+(defconst dustveil-syntax-variable "#b6ada5")
+(defconst dustveil-syntax-keyword "#d8cec4")
+(defconst dustveil-syntax-function "#f1e6dc")
+(defconst dustveil-color-0 "#898078")
+(defconst dustveil-color-1 "#948b83")
+(defconst dustveil-color-2 "#a0978f")
+(defconst dustveil-color-3 "#aba29a")
+(defconst dustveil-color-4 "#b6ada5")
+(defconst dustveil-color-5 "#c2b9b1")
+(defconst dustveil-color-6 "#cdc4bc")
 (defconst dustveil-color-7 "#e0d7ce")
-(defconst dustveil-color-8 "#8a8179")
-(defconst dustveil-color-9 "#8c837b")
-(defconst dustveil-color-10 "#978e86")
-(defconst dustveil-color-11 "#aaa198")
-(defconst dustveil-color-12 "#8b827a")
-(defconst dustveil-color-13 "#8e857d")
-(defconst dustveil-color-14 "#9e958d")
-(defconst dustveil-color-15 "#fcf2e9")
+(defconst dustveil-color-8 "#a9a098")
+(defconst dustveil-color-9 "#b4aba3")
+(defconst dustveil-color-10 "#c0b7af")
+(defconst dustveil-color-11 "#cbc2ba")
+(defconst dustveil-color-12 "#d6cdc5")
+(defconst dustveil-color-13 "#e2d9d1")
+(defconst dustveil-color-14 "#ede4dc")
+(defconst dustveil-color-15 "#fff6ed")
 
 (defface dustveil-parameter-face
   '((t (:inherit font-lock-variable-name-face)))
@@ -61,11 +63,11 @@ Popup faces retain explicit backgrounds.  Reload the theme with
   (custom-theme-set-faces
    'dustveil
    `(default ((((type tty)) (:background ,tty-background
-                            :foreground ,dustveil-foreground))
+                             :foreground ,dustveil-foreground))
               (t (:background ,dustveil-background :foreground ,dustveil-foreground))))
    `(fringe ((((type tty)) (:background ,tty-background
-                           :foreground ,dustveil-color-1))
-             (t (:background ,dustveil-background :foreground ,dustveil-color-1))))))
+                            :foreground ,dustveil-secondary))
+             (t (:background ,dustveil-background :foreground ,dustveil-secondary))))))
 
 (custom-theme-set-faces
  'dustveil
@@ -76,49 +78,49 @@ Popup faces retain explicit backgrounds.  Reload the theme with
  `(highlight ((t (:background ,dustveil-surface))))
  `(hl-line ((t (:background ,dustveil-background))))
  `(secondary-selection ((t (:background ,dustveil-foreground :foreground ,dustveil-background :extend t))))
- `(vertical-border ((t (:foreground ,dustveil-color-1))))
+ `(vertical-border ((t (:foreground ,dustveil-secondary))))
  `(window-divider ((t (:foreground ,dustveil-border))))
- `(shadow ((t (:foreground ,dustveil-color-1))))
- `(escape-glyph ((t (:foreground ,dustveil-color-1))))
- `(nobreak-space ((t (:foreground ,dustveil-color-3 :underline t))))
+ `(shadow ((t (:foreground ,dustveil-secondary))))
+ `(escape-glyph ((t (:foreground ,dustveil-secondary))))
+ `(nobreak-space ((t (:foreground ,dustveil-syntax-literal :underline t))))
  `(file-name-shadow ((t (:inherit shadow))))
- `(fill-column-indicator ((t (:foreground ,dustveil-border))))
- `(line-number ((t (:foreground ,dustveil-color-1 :background unspecified))))
+ `(fill-column-indicator ((t (:foreground ,dustveil-separator))))
+ `(line-number ((t (:foreground ,dustveil-secondary :background unspecified))))
  `(line-number-current-line ((t (:foreground ,dustveil-accent
-                                             :background ,dustveil-surface
-                                             :bold t))))
+                                 :background ,dustveil-surface
+                                 :bold t))))
  `(minibuffer-prompt ((t (:foreground ,dustveil-accent :bold t))))
  `(trailing-whitespace ((t (:background ,dustveil-surface))))
  `(show-paren-match ((t (:background ,dustveil-surface :bold t :underline t))))
  `(show-paren-mismatch ((t (:foreground ,dustveil-background
-                                         :background ,dustveil-color-15))))
+                            :background ,dustveil-foreground))))
  `(match ((t (:background ,dustveil-surface
-                          :foreground ,dustveil-accent))))
+              :foreground ,dustveil-accent))))
 
  ;; --- search -------------------------------------------------------------------
  `(isearch ((t (:background ,dustveil-foreground :foreground ,dustveil-background :extend t))))
- `(isearch-fail ((t (:foreground ,dustveil-color-15 :underline t))))
+ `(isearch-fail ((t (:foreground ,dustveil-foreground :underline t))))
  `(lazy-highlight ((t (:background ,dustveil-foreground :foreground ,dustveil-background :extend t))))
  `(query-replace ((t (:background ,dustveil-foreground :foreground ,dustveil-background :extend t))))
  ;; --- mode-line, header-line, tab-bar ---------------------------------------------
  `(mode-line ((t (:background ,dustveil-background
-                              :foreground ,dustveil-color-15
-                              :box (:color ,dustveil-color-1)))))
+                  :foreground ,dustveil-foreground
+                  :box (:color ,dustveil-secondary)))))
  `(mode-line-inactive ((t (:background ,dustveil-surface
-                                       :foreground ,dustveil-color-1
-                                       :box (:color ,dustveil-border)))))
+                           :foreground ,dustveil-secondary
+                           :box (:color ,dustveil-border)))))
  `(mode-line-active ((t (:inherit mode-line))))
  `(mode-line-buffer-id ((t (:foreground ,dustveil-accent :bold t))))
  `(mode-line-highlight ((t (:foreground ,dustveil-accent))))
- `(mode-line-emphasis ((t (:foreground ,dustveil-color-15 :bold t))))
+ `(mode-line-emphasis ((t (:foreground ,dustveil-foreground :bold t))))
  `(header-line ((t (:inherit mode-line))))
  `(header-line-highlight ((t (:inherit mode-line-highlight))))
  `(tab-bar ((t (:background ,dustveil-background
-                            :foreground ,dustveil-color-1))))
+                :foreground ,dustveil-secondary))))
  `(tab-bar-tab ((t (:background ,dustveil-surface
-                                :foreground ,dustveil-color-15 :weight bold))))
+                    :foreground ,dustveil-foreground :weight bold))))
  `(tab-bar-tab-inactive ((t (:background ,dustveil-background
-                                         :foreground ,dustveil-color-1))))
+                             :foreground ,dustveil-secondary))))
  `(tab-bar-tab-group-current ((t (:foreground ,dustveil-accent :bold t))))
  `(tab-bar-tab-group-inactive ((t (:inherit tab-bar-tab-inactive))))
  `(tab-line ((t (:inherit tab-bar))))
@@ -131,43 +133,43 @@ Popup faces retain explicit backgrounds.  Reload the theme with
 
  ;; --- doom-modeline ---------------------------------------------------------------
  `(doom-modeline-bar ((t (:background ,dustveil-foreground :foreground ,dustveil-background))))
- `(doom-modeline-bar-inactive ((t (:background ,dustveil-color-1))))
- `(doom-modeline-buffer-file ((t (:foreground ,dustveil-color-15))))
- `(doom-modeline-buffer-path ((t (:foreground ,dustveil-color-15))))
- `(doom-modeline-buffer-major-mode ((t (:foreground ,dustveil-color-6))))
+ `(doom-modeline-bar-inactive ((t (:background ,dustveil-secondary))))
+ `(doom-modeline-buffer-file ((t (:foreground ,dustveil-foreground))))
+ `(doom-modeline-buffer-path ((t (:foreground ,dustveil-foreground))))
+ `(doom-modeline-buffer-major-mode ((t (:foreground ,dustveil-syntax-variable))))
  `(doom-modeline-buffer-minor-mode ((t (:inherit shadow))))
  `(doom-modeline-buffer-modified ((t (:foreground ,dustveil-accent :bold t))))
- `(doom-modeline-emphasis ((t (:foreground ,dustveil-color-15 :bold t))))
+ `(doom-modeline-emphasis ((t (:foreground ,dustveil-foreground :bold t))))
  `(doom-modeline-highlight ((t (:foreground ,dustveil-accent))))
- `(doom-modeline-info ((t (:foreground ,dustveil-color-5))))
- `(doom-modeline-warning ((t (:foreground ,dustveil-color-3))))
- `(doom-modeline-urgent ((t (:foreground ,dustveil-color-15 :bold t))))
- `(doom-modeline-debug ((t (:foreground ,dustveil-color-3))))
- `(doom-modeline-debug-visual ((t (:foreground ,dustveil-color-3 :bold t))))
- `(doom-modeline-vcs-default ((t (:foreground ,dustveil-color-7))))
- `(doom-modeline-lsp-error ((t (:foreground ,dustveil-color-15))))
- `(doom-modeline-lsp-warning ((t (:foreground ,dustveil-color-3))))
+ `(doom-modeline-info ((t (:foreground ,dustveil-syntax-variable))))
+ `(doom-modeline-warning ((t (:foreground ,dustveil-syntax-literal))))
+ `(doom-modeline-urgent ((t (:foreground ,dustveil-foreground :bold t))))
+ `(doom-modeline-debug ((t (:foreground ,dustveil-syntax-literal))))
+ `(doom-modeline-debug-visual ((t (:foreground ,dustveil-syntax-literal :bold t))))
+ `(doom-modeline-vcs-default ((t (:foreground ,dustveil-syntax-keyword))))
+ `(doom-modeline-lsp-error ((t (:foreground ,dustveil-foreground))))
+ `(doom-modeline-lsp-warning ((t (:foreground ,dustveil-syntax-literal))))
  `(doom-modeline-lsp-success ((t (:foreground ,dustveil-accent))))
- `(doom-modeline-lsp-running ((t (:foreground ,dustveil-color-3))))
+ `(doom-modeline-lsp-running ((t (:foreground ,dustveil-syntax-literal))))
  `(doom-modeline-evil-normal-state ((t (:foreground ,dustveil-accent :bold t))))
- `(doom-modeline-evil-insert-state ((t (:foreground ,dustveil-color-7 :bold t))))
- `(doom-modeline-evil-visual-state ((t (:foreground ,dustveil-color-3 :bold t))))
- `(doom-modeline-evil-replace-state ((t (:foreground ,dustveil-color-5 :bold t))))
- `(doom-modeline-evil-emacs-state ((t (:foreground ,dustveil-color-6 :bold t))))
- `(doom-modeline-evil-motion-state ((t (:foreground ,dustveil-color-6 :bold t))))
- `(doom-modeline-evil-operator-state ((t (:foreground ,dustveil-color-3 :bold t))))
- `(doom-modeline-evil-user-state ((t (:foreground ,dustveil-color-6 :bold t))))
- `(doom-modeline-battery-critical ((t (:foreground ,dustveil-color-15 :bold t))))
- `(doom-modeline-battery-error ((t (:foreground ,dustveil-color-15))))
- `(doom-modeline-battery-warning ((t (:foreground ,dustveil-color-3))))
+ `(doom-modeline-evil-insert-state ((t (:foreground ,dustveil-syntax-keyword :bold t))))
+ `(doom-modeline-evil-visual-state ((t (:foreground ,dustveil-syntax-literal :bold t))))
+ `(doom-modeline-evil-replace-state ((t (:foreground ,dustveil-syntax-variable :bold t))))
+ `(doom-modeline-evil-emacs-state ((t (:foreground ,dustveil-syntax-variable :bold t))))
+ `(doom-modeline-evil-motion-state ((t (:foreground ,dustveil-syntax-variable :bold t))))
+ `(doom-modeline-evil-operator-state ((t (:foreground ,dustveil-syntax-literal :bold t))))
+ `(doom-modeline-evil-user-state ((t (:foreground ,dustveil-syntax-variable :bold t))))
+ `(doom-modeline-battery-critical ((t (:foreground ,dustveil-foreground :bold t))))
+ `(doom-modeline-battery-error ((t (:foreground ,dustveil-foreground))))
+ `(doom-modeline-battery-warning ((t (:foreground ,dustveil-syntax-literal))))
  `(doom-modeline-battery-charging ((t (:foreground ,dustveil-accent))))
  `(doom-modeline-battery-full ((t (:foreground ,dustveil-accent))))
- `(doom-modeline-battery-normal ((t (:foreground ,dustveil-color-7))))
+ `(doom-modeline-battery-normal ((t (:foreground ,dustveil-syntax-keyword))))
  `(doom-modeline-unread-number ((t (:foreground ,dustveil-accent :bold t))))
- `(doom-modeline-compilation ((t (:foreground ,dustveil-color-3))))
+ `(doom-modeline-compilation ((t (:foreground ,dustveil-syntax-literal))))
  `(doom-modeline-panel ((t (:background ,dustveil-foreground
-                                         :foreground ,dustveil-background :bold t))))
- `(doom-modeline-persp-name ((t (:foreground ,dustveil-color-3))))
+                            :foreground ,dustveil-background :bold t))))
+ `(doom-modeline-persp-name ((t (:foreground ,dustveil-syntax-literal))))
  `(doom-modeline-workspace-name ((t (:foreground ,dustveil-accent :bold t))))
  `(doom-modeline-persp-buffer-not-in-persp
    ((t (:inherit shadow :italic t))))
@@ -176,20 +178,20 @@ Popup faces retain explicit backgrounds.  Reload the theme with
  `(doom-modeline-project-parent-dir ((t (:inherit shadow))))
  `(doom-modeline-project-root-dir ((t (:inherit shadow))))
  `(doom-modeline-repl-success ((t (:foreground ,dustveil-accent))))
- `(doom-modeline-repl-warning ((t (:foreground ,dustveil-color-3))))
- `(doom-modeline-overwrite ((t (:foreground ,dustveil-color-15 :bold t))))
- `(doom-modeline-time ((t (:foreground ,dustveil-color-1))))
- `(doom-modeline-host ((t (:foreground ,dustveil-color-1))))
- `(doom-modeline-input-method ((t (:foreground ,dustveil-color-1))))
+ `(doom-modeline-repl-warning ((t (:foreground ,dustveil-syntax-literal))))
+ `(doom-modeline-overwrite ((t (:foreground ,dustveil-foreground :bold t))))
+ `(doom-modeline-time ((t (:foreground ,dustveil-secondary))))
+ `(doom-modeline-host ((t (:foreground ,dustveil-secondary))))
+ `(doom-modeline-input-method ((t (:foreground ,dustveil-secondary))))
 
  ;; --- solaire (secondary buffers) ---------------------------------------------------
  `(solaire-default-face ((t (:inherit default))))
  `(solaire-fringe-face ((t (:inherit fringe))))
  `(solaire-header-line-face ((t (:inherit header-line
-                                :background ,dustveil-surface))))
+                                 :background ,dustveil-surface))))
  `(solaire-hl-line-face ((t (:inherit hl-line :background ,dustveil-surface))))
  `(solaire-line-number-face ((t (:inherit line-number
-                                :background ,dustveil-surface))))
+                                 :background ,dustveil-surface))))
  `(solaire-mode-line-face ((t (:inherit mode-line))))
  `(solaire-mode-line-active-face ((t (:inherit mode-line-active))))
  `(solaire-mode-line-inactive-face ((t (:inherit mode-line-inactive))))
@@ -222,7 +224,7 @@ Popup faces retain explicit backgrounds.  Reload the theme with
  `(font-lock-misc-punctuation-face ((t (:inherit font-lock-punctuation-face))))
  `(font-lock-preprocessor-face ((t (:inherit font-lock-keyword-face))))
  `(font-lock-negation-char-face ((t (:inherit font-lock-operator-face))))
- `(font-lock-warning-face ((t (:foreground ,dustveil-color-3))))
+ `(font-lock-warning-face ((t (:foreground ,dustveil-syntax-literal))))
  `(font-lock-escape-face ((t (:foreground ,dustveil-foreground))))
  `(font-lock-regexp-grouping-backslash ((t (:inherit bold))))
  `(font-lock-regexp-grouping-construct ((t (:inherit bold))))
@@ -304,25 +306,25 @@ Popup faces retain explicit backgrounds.  Reload the theme with
  `(tree-sitter-hl-face:comment.unused ((t (:inherit font-lock-comment-face :strike-through t))))
 
  ;; --- diagnostics (restrained: colored text, no noisy backgrounds) ----------------
- `(error ((t (:foreground ,dustveil-color-15))))
- `(warning ((t (:foreground ,dustveil-color-3))))
+ `(error ((t (:foreground ,dustveil-foreground))))
+ `(warning ((t (:foreground ,dustveil-syntax-literal))))
  `(success ((t (:foreground ,dustveil-accent))))
- `(flycheck-error ((t (:underline (:style wave :color ,dustveil-color-15)))))
- `(flycheck-warning ((t (:underline (:style wave :color ,dustveil-color-3)))))
- `(flycheck-info ((t (:underline (:style wave :color ,dustveil-color-5)))))
+ `(flycheck-error ((t (:underline (:style wave :color ,dustveil-foreground)))))
+ `(flycheck-warning ((t (:underline (:style wave :color ,dustveil-syntax-literal)))))
+ `(flycheck-info ((t (:underline (:style wave :color ,dustveil-syntax-variable)))))
  `(flycheck-fringe-error ((t (:inherit error))))
  `(flycheck-fringe-warning ((t (:inherit warning))))
  `(flycheck-fringe-info ((t (:inherit compilation-info))))
- `(flycheck-error-list-error ((t (:foreground ,dustveil-color-15 :bold t))))
- `(flycheck-error-list-warning ((t (:foreground ,dustveil-color-3 :bold t))))
- `(flycheck-error-list-info ((t (:foreground ,dustveil-color-5 :bold t))))
+ `(flycheck-error-list-error ((t (:foreground ,dustveil-foreground :bold t))))
+ `(flycheck-error-list-warning ((t (:foreground ,dustveil-syntax-literal :bold t))))
+ `(flycheck-error-list-info ((t (:foreground ,dustveil-syntax-variable :bold t))))
  `(flycheck-error-list-line-number ((t (:inherit shadow))))
  `(flycheck-error-list-column-number ((t (:inherit shadow))))
- `(flycheck-error-list-id ((t (:foreground ,dustveil-color-1))))
- `(flycheck-error-list-filename ((t (:foreground ,dustveil-color-6))))
- `(flymake-error ((t (:underline (:style wave :color ,dustveil-color-15)))))
- `(flymake-warning ((t (:underline (:style wave :color ,dustveil-color-3)))))
- `(flymake-note ((t (:underline (:style wave :color ,dustveil-color-5)))))
+ `(flycheck-error-list-id ((t (:foreground ,dustveil-secondary))))
+ `(flycheck-error-list-filename ((t (:foreground ,dustveil-syntax-variable))))
+ `(flymake-error ((t (:underline (:style wave :color ,dustveil-foreground)))))
+ `(flymake-warning ((t (:underline (:style wave :color ,dustveil-syntax-literal)))))
+ `(flymake-note ((t (:underline (:style wave :color ,dustveil-syntax-variable)))))
 
  ;; --- eglot ------------------------------------------------------------------------
  `(eglot-highlight-symbol-face ((t (:background ,dustveil-surface))))
@@ -330,54 +332,54 @@ Popup faces retain explicit backgrounds.  Reload the theme with
  `(eglot-diagnostic-tag-deprecated-face ((t (:strike-through t))))
  `(eglot-inlay-hint-face ((t (:inherit shadow :height 0.8 :slant italic))))
  `(eglot-type-hint-face ((t (:inherit eglot-inlay-hint-face
-                           :foreground ,dustveil-color-3))))
+                             :foreground ,dustveil-syntax-literal))))
  `(eglot-parameter-hint-face ((t (:inherit eglot-inlay-hint-face
-                                :foreground ,dustveil-accent))))
+                                  :foreground ,dustveil-accent))))
 
  ;; --- completions ---------------------------------------------------------------------
  `(completions-common-part ((t (:inherit nil :foreground unspecified :bold t :underline t))))
  `(completions-first-difference ((t (:inherit completions-common-part :foreground unspecified))))
  `(completions-annotations ((t (:inherit shadow :slant italic))))
  `(completions-highlight ((t (:background ,dustveil-foreground :foreground ,dustveil-background :extend t))))
- `(completions-group-title ((t (:foreground ,dustveil-color-3 :weight bold))))
- `(completions-group-separator ((t (:foreground ,dustveil-color-1
-                                   :strike-through t))))
+ `(completions-group-title ((t (:foreground ,dustveil-syntax-literal :weight bold))))
+ `(completions-group-separator ((t (:foreground ,dustveil-secondary
+                                    :strike-through t))))
  `(corfu-default ((t (:background ,dustveil-background
-                                  :foreground ,dustveil-foreground))))
+                      :foreground ,dustveil-foreground))))
  `(corfu-current ((t (:background ,dustveil-surface :foreground ,dustveil-foreground
-                                 :box (:color ,dustveil-accent) :extend t))))
+                      :box (:color ,dustveil-accent) :extend t))))
  `(corfu-annotations ((t (:inherit completions-annotations))))
  `(corfu-deprecated ((t (:inherit shadow :strike-through t))))
- `(corfu-bar ((t (:background ,dustveil-color-1))))
+ `(corfu-bar ((t (:background ,dustveil-secondary))))
  `(corfu-border ((t (:background ,dustveil-foreground :foreground ,dustveil-background))))
  `(corfu-echo ((t (:inherit completions-annotations))))
  `(corfu-popupinfo ((t (:background ,dustveil-background
-                                    :foreground ,dustveil-color-7))))
+                        :foreground ,dustveil-syntax-keyword))))
  `(corfu-quick1 ((t (:foreground ,dustveil-accent :bold t))))
- `(corfu-quick2 ((t (:foreground ,dustveil-color-3 :bold t))))
+ `(corfu-quick2 ((t (:foreground ,dustveil-syntax-literal :bold t))))
  `(vertico-current ((t (:background ,dustveil-surface :foreground ,dustveil-foreground
-                                   :box (:color ,dustveil-accent) :extend t))))
+                        :box (:color ,dustveil-accent) :extend t))))
  `(vertico-group-title ((t (:inherit completions-group-title))))
- `(vertico-group-separator ((t (:foreground ,dustveil-color-1))))
+ `(vertico-group-separator ((t (:foreground ,dustveil-secondary))))
  `(orderless-match-face-0 ((t (:inherit completions-common-part :foreground unspecified))))
  `(orderless-match-face-1 ((t (:inherit completions-common-part :foreground unspecified))))
  `(orderless-match-face-2 ((t (:inherit completions-common-part :foreground unspecified))))
  `(orderless-match-face-3 ((t (:inherit completions-common-part :foreground unspecified))))
  `(marginalia-documentation ((t (:inherit completions-annotations))))
  `(marginalia-key ((t (:foreground ,dustveil-accent :bold t))))
- `(marginalia-value ((t (:foreground ,dustveil-color-7))))
+ `(marginalia-value ((t (:foreground ,dustveil-syntax-keyword))))
  `(marginalia-lighter ((t (:inherit shadow))))
- `(marginalia-modified ((t (:foreground ,dustveil-color-3))))
- `(marginalia-date ((t (:foreground ,dustveil-color-6))))
- `(marginalia-type ((t (:foreground ,dustveil-color-6))))
+ `(marginalia-modified ((t (:foreground ,dustveil-syntax-literal))))
+ `(marginalia-date ((t (:foreground ,dustveil-syntax-variable))))
+ `(marginalia-type ((t (:foreground ,dustveil-syntax-variable))))
  `(marginalia-on ((t (:foreground ,dustveil-accent))))
  `(marginalia-off ((t (:inherit shadow))))
  `(marginalia-installed ((t (:foreground ,dustveil-accent))))
  `(marginalia-archive ((t (:inherit shadow))))
  `(marginalia-null ((t (:inherit shadow))))
- `(marginalia-number ((t (:foreground ,dustveil-color-3))))
- `(marginalia-function ((t (:foreground ,dustveil-color-6))))
- `(marginalia-symbol ((t (:foreground ,dustveil-color-3))))
+ `(marginalia-number ((t (:foreground ,dustveil-syntax-literal))))
+ `(marginalia-function ((t (:foreground ,dustveil-syntax-variable))))
+ `(marginalia-symbol ((t (:foreground ,dustveil-syntax-literal))))
  `(consult-help ((t (:foreground ,dustveil-accent))))
  `(consult-key ((t (:foreground ,dustveil-accent :bold t))))
  `(consult-grep-context ((t (:inherit completions-annotations))))
@@ -387,85 +389,85 @@ Popup faces retain explicit backgrounds.  Reload the theme with
  `(consult-highlight-match ((t (:inherit completions-common-part :foreground unspecified))))
  `(consult-highlight-mark ((t (:background ,dustveil-surface))))
  `(consult-async-split ((t (:foreground ,dustveil-accent :bold t))))
- `(consult-async-running ((t (:foreground ,dustveil-color-3))))
- `(consult-async-failed ((t (:foreground ,dustveil-color-15))))
+ `(consult-async-running ((t (:foreground ,dustveil-syntax-literal))))
+ `(consult-async-failed ((t (:foreground ,dustveil-foreground))))
  `(consult-async-finished ((t (:foreground ,dustveil-accent))))
- `(consult-async-option ((t (:foreground ,dustveil-color-6))))
- `(consult-narrow-indicator ((t (:foreground ,dustveil-color-1))))
+ `(consult-async-option ((t (:foreground ,dustveil-syntax-variable))))
+ `(consult-narrow-indicator ((t (:foreground ,dustveil-secondary))))
  `(consult-imenu-prefix ((t (:inherit shadow))))
  `(consult-line-number ((t (:inherit shadow))))
  `(embark-keybinding ((t (:foreground ,dustveil-accent :bold t))))
  `(embark-keybinding-repeat ((t (:foreground ,dustveil-accent :bold t
-                                              :underline t))))
- `(embark-keymap ((t (:foreground ,dustveil-color-3 :bold t))))
+                                 :underline t))))
+ `(embark-keymap ((t (:foreground ,dustveil-syntax-literal :bold t))))
  `(embark-target ((t (:foreground ,dustveil-accent))))
  `(embark-selected ((t (:background ,dustveil-foreground :foreground ,dustveil-background :extend t))))
- `(embark-collect-group-title ((t (:foreground ,dustveil-color-3 :bold t))))
- `(embark-collect-group-separator ((t (:foreground ,dustveil-color-1))))
+ `(embark-collect-group-title ((t (:foreground ,dustveil-syntax-literal :bold t))))
+ `(embark-collect-group-separator ((t (:foreground ,dustveil-secondary))))
  `(embark-collect-candidate ((t (:foreground ,dustveil-foreground))))
  `(embark-collect-annotation ((t (:inherit completions-annotations))))
  `(embark-verbose-indicator-title ((t (:foreground ,dustveil-accent :bold t))))
  `(embark-verbose-indicator-documentation
    ((t (:inherit completions-annotations))))
- `(embark-verbose-indicator-shadowed ((t (:foreground ,dustveil-color-1))))
+ `(embark-verbose-indicator-shadowed ((t (:foreground ,dustveil-secondary))))
 
  ;; --- dired, diredfl, dirvish -------------------------------------------------------
- `(dired-directory ((t (:foreground ,dustveil-color-3))))
- `(dired-symlink ((t (:foreground ,dustveil-color-6))))
- `(dired-broken-symlink ((t (:foreground ,dustveil-color-15 :bold t))))
- `(dired-flagged ((t (:foreground ,dustveil-color-15
-                                  :background ,dustveil-surface))))
+ `(dired-directory ((t (:foreground ,dustveil-syntax-literal))))
+ `(dired-symlink ((t (:foreground ,dustveil-syntax-variable))))
+ `(dired-broken-symlink ((t (:foreground ,dustveil-foreground :bold t))))
+ `(dired-flagged ((t (:foreground ,dustveil-foreground
+                      :background ,dustveil-surface))))
  `(dired-marked ((t (:foreground ,dustveil-background
-                                 :background ,dustveil-foreground))))
+                     :background ,dustveil-foreground))))
  `(dired-mark ((t (:foreground ,dustveil-accent :bold t))))
- `(dired-header ((t (:foreground ,dustveil-color-3 :bold t))))
- `(dired-special ((t (:foreground ,dustveil-color-7))))
- `(dired-ignored ((t (:foreground ,dustveil-color-1))))
- `(dired-warning ((t (:foreground ,dustveil-color-3))))
- `(diredfl-dir-heading ((t (:foreground ,dustveil-color-3 :bold t))))
- `(diredfl-dir-name ((t (:foreground ,dustveil-color-6 :bold t))))
- `(diredfl-dir-priv ((t (:foreground ,dustveil-color-6))))
+ `(dired-header ((t (:foreground ,dustveil-syntax-literal :bold t))))
+ `(dired-special ((t (:foreground ,dustveil-syntax-keyword))))
+ `(dired-ignored ((t (:foreground ,dustveil-secondary))))
+ `(dired-warning ((t (:foreground ,dustveil-syntax-literal))))
+ `(diredfl-dir-heading ((t (:foreground ,dustveil-syntax-literal :bold t))))
+ `(diredfl-dir-name ((t (:foreground ,dustveil-syntax-variable :bold t))))
+ `(diredfl-dir-priv ((t (:foreground ,dustveil-syntax-variable))))
  `(diredfl-file-name ((t (:foreground ,dustveil-foreground))))
- `(diredfl-file-suffix ((t (:foreground ,dustveil-color-1))))
+ `(diredfl-file-suffix ((t (:foreground ,dustveil-secondary))))
  `(diredfl-date-time ((t (:inherit shadow))))
  `(diredfl-number ((t (:inherit shadow))))
- `(diredfl-symlink ((t (:foreground ,dustveil-color-6))))
- `(diredfl-executable-tag ((t (:foreground ,dustveil-color-7))))
+ `(diredfl-symlink ((t (:foreground ,dustveil-syntax-variable))))
+ `(diredfl-executable-tag ((t (:foreground ,dustveil-syntax-keyword))))
  `(diredfl-compressed-file-name ((t (:foreground ,dustveil-foreground))))
- `(diredfl-compressed-file-suffix ((t (:foreground ,dustveil-color-3))))
- `(diredfl-ignored-file-name ((t (:foreground ,dustveil-color-1))))
+ `(diredfl-compressed-file-suffix ((t (:foreground ,dustveil-syntax-literal))))
+ `(diredfl-ignored-file-name ((t (:foreground ,dustveil-secondary))))
  `(diredfl-flag-mark ((t (:foreground ,dustveil-background
-                                       :background ,dustveil-foreground :bold t))))
+                          :background ,dustveil-foreground :bold t))))
  `(diredfl-flag-mark-line ((t (:background ,dustveil-foreground
-                                           :foreground ,dustveil-background))))
+                               :foreground ,dustveil-background))))
  `(diredfl-deletion ((t (:foreground ,dustveil-background
-                                      :background ,dustveil-color-15 :bold t))))
- `(diredfl-deletion-file-name ((t (:foreground ,dustveil-color-15))))
+                         :background ,dustveil-foreground :bold t))))
+ `(diredfl-deletion-file-name ((t (:foreground ,dustveil-foreground))))
  `(diredfl-read-priv ((t (:inherit shadow))))
  `(diredfl-write-priv ((t (:inherit shadow))))
- `(diredfl-exec-priv ((t (:foreground ,dustveil-color-7))))
- `(diredfl-no-priv ((t (:foreground ,dustveil-color-1))))
- `(diredfl-link-priv ((t (:foreground ,dustveil-color-6))))
- `(diredfl-other-priv ((t (:foreground ,dustveil-color-1))))
- `(diredfl-rare-priv ((t (:foreground ,dustveil-color-3))))
+ `(diredfl-exec-priv ((t (:foreground ,dustveil-syntax-keyword))))
+ `(diredfl-no-priv ((t (:foreground ,dustveil-secondary))))
+ `(diredfl-link-priv ((t (:foreground ,dustveil-syntax-variable))))
+ `(diredfl-other-priv ((t (:foreground ,dustveil-secondary))))
+ `(diredfl-rare-priv ((t (:foreground ,dustveil-syntax-literal))))
  `(dirvish-hl-line ((t (:background ,dustveil-surface))))
  `(dirvish-hl-line-inactive ((t (:background ,dustveil-background))))
  `(dirvish-inactive ((t (:inherit shadow))))
- `(dirvish-subtree-guide ((t (:foreground ,dustveil-color-0))))
- `(dirvish-emerge-group-title ((t (:foreground ,dustveil-color-3 :bold t))))
+ `(dirvish-subtree-guide ((t (:foreground ,dustveil-secondary))))
+ `(dirvish-emerge-group-title ((t (:foreground ,dustveil-syntax-literal :bold t))))
  `(dirvish-narrow-match-face-0 ((t (:foreground ,dustveil-accent :bold t))))
- `(dirvish-narrow-match-face-1 ((t (:foreground ,dustveil-color-3 :bold t))))
- `(dirvish-narrow-match-face-2 ((t (:foreground ,dustveil-color-7 :bold t))))
- `(dirvish-narrow-match-face-3 ((t (:foreground ,dustveil-color-6 :bold t))))
- `(dirvish-narrow-split ((t (:foreground ,dustveil-color-1))))
+ `(dirvish-narrow-match-face-1 ((t (:foreground ,dustveil-syntax-literal :bold t))))
+ `(dirvish-narrow-match-face-2 ((t (:foreground ,dustveil-syntax-keyword :bold t))))
+ `(dirvish-narrow-match-face-3 ((t (:foreground ,dustveil-syntax-variable :bold t))))
+ `(dirvish-narrow-split ((t (:foreground ,dustveil-secondary))))
  `(dirvish-vc-added-state ((t (:foreground ,dustveil-accent))))
- `(dirvish-vc-edited-state ((t (:foreground ,dustveil-color-3))))
- `(dirvish-vc-conflict-state ((t (:foreground ,dustveil-color-15 :bold t))))
- `(dirvish-vc-removed-state ((t (:foreground ,dustveil-color-1))))
- `(dirvish-vc-unregistered-face ((t (:foreground ,dustveil-color-1))))
- `(dirvish-proc-failed ((t (:foreground ,dustveil-color-15))))
+ `(dirvish-vc-edited-state ((t (:foreground ,dustveil-syntax-literal))))
+ `(dirvish-vc-conflict-state ((t (:foreground ,dustveil-foreground :bold t))))
+ `(dirvish-vc-removed-state ((t (:foreground ,dustveil-secondary))))
+ `(dirvish-vc-unregistered-face ((t (:foreground ,dustveil-secondary))))
+ `(dirvish-proc-failed ((t (:foreground ,dustveil-foreground))))
  `(dirvish-proc-finished ((t (:foreground ,dustveil-accent))))
- `(dirvish-proc-running ((t (:foreground ,dustveil-color-3))))
+ `(dirvish-proc-running ((t (:foreground ,dustveil-syntax-literal))))
  `(dirvish-free-space ((t (:inherit shadow))))
  `(dirvish-file-device-number ((t (:inherit shadow))))
  `(dirvish-file-group-id ((t (:inherit shadow))))
@@ -476,114 +478,114 @@ Popup faces retain explicit backgrounds.  Reload the theme with
  `(dirvish-file-time ((t (:inherit shadow))))
  `(dirvish-file-user-id ((t (:inherit shadow))))
  `(dirvish-git-commit-message-face ((t (:foreground ,dustveil-foreground))))
- `(dirvish-collapse-dir-face ((t (:foreground ,dustveil-color-6))))
+ `(dirvish-collapse-dir-face ((t (:foreground ,dustveil-syntax-variable))))
  `(dirvish-collapse-file-face ((t (:foreground ,dustveil-foreground))))
- `(dirvish-collapse-empty-dir-face ((t (:foreground ,dustveil-color-1))))
+ `(dirvish-collapse-empty-dir-face ((t (:foreground ,dustveil-secondary))))
  `(dirvish-media-info-heading ((t (:foreground ,dustveil-accent :bold t))))
 
  ;; --- diff, magit, vc ------------------------------------------------------------------
- `(diff-hl-change ((t (:foreground ,dustveil-color-3))))
- `(diff-hl-delete ((t (:foreground ,dustveil-color-15))))
+ `(diff-hl-change ((t (:foreground ,dustveil-syntax-literal))))
+ `(diff-hl-delete ((t (:foreground ,dustveil-foreground))))
  `(diff-hl-insert ((t (:foreground ,dustveil-accent))))
  `(diff-added ((t (:foreground ,dustveil-accent
-                               :background ,dustveil-background))))
- `(diff-removed ((t (:foreground ,dustveil-color-15
-                                 :background ,dustveil-background))))
- `(diff-changed ((t (:foreground ,dustveil-color-3))))
+                   :background ,dustveil-background))))
+ `(diff-removed ((t (:foreground ,dustveil-foreground
+                     :background ,dustveil-background))))
+ `(diff-changed ((t (:foreground ,dustveil-syntax-literal))))
  `(diff-refine-added ((t (:foreground ,dustveil-accent :bold t))))
- `(diff-refine-removed ((t (:foreground ,dustveil-color-15 :bold t))))
- `(diff-refine-changed ((t (:foreground ,dustveil-color-3 :bold t))))
- `(diff-header ((t (:foreground ,dustveil-color-1))))
- `(diff-hunk-header ((t (:foreground ,dustveil-color-1
-                                     :background ,dustveil-surface))))
+ `(diff-refine-removed ((t (:foreground ,dustveil-foreground :bold t))))
+ `(diff-refine-changed ((t (:foreground ,dustveil-syntax-literal :bold t))))
+ `(diff-header ((t (:foreground ,dustveil-secondary))))
+ `(diff-hunk-header ((t (:foreground ,dustveil-secondary
+                         :background ,dustveil-surface))))
  `(diff-file-header ((t (:foreground ,dustveil-accent :bold t))))
  `(magit-section-highlight ((t (:background ,dustveil-surface))))
  `(magit-section-heading ((t (:foreground ,dustveil-accent :bold t))))
  `(magit-section-heading-selection ((t (:foreground ,dustveil-accent))))
- `(magit-dimmed ((t (:foreground ,dustveil-color-1))))
+ `(magit-dimmed ((t (:foreground ,dustveil-secondary))))
  `(magit-hash ((t (:inherit shadow))))
  `(magit-header-line ((t (:foreground ,dustveil-accent :bold t))))
- `(magit-branch-local ((t (:foreground ,dustveil-color-6))))
- `(magit-branch-remote ((t (:foreground ,dustveil-color-3))))
+ `(magit-branch-local ((t (:foreground ,dustveil-syntax-variable))))
+ `(magit-branch-remote ((t (:foreground ,dustveil-syntax-literal))))
  `(magit-branch-current ((t (:foreground ,dustveil-accent :bold t))))
- `(magit-tag ((t (:foreground ,dustveil-color-3))))
- `(magit-refname ((t (:foreground ,dustveil-color-7))))
- `(magit-log-author ((t (:foreground ,dustveil-color-6))))
+ `(magit-tag ((t (:foreground ,dustveil-syntax-literal))))
+ `(magit-refname ((t (:foreground ,dustveil-syntax-keyword))))
+ `(magit-log-author ((t (:foreground ,dustveil-syntax-variable))))
  `(magit-log-date ((t (:inherit shadow))))
- `(magit-diff-hunk-heading ((t (:foreground ,dustveil-color-1
-                                            :background ,dustveil-background))))
- `(magit-diff-hunk-heading-highlight ((t (:foreground ,dustveil-color-1
-                                                      :background
-                                                      ,dustveil-surface))))
+ `(magit-diff-hunk-heading ((t (:foreground ,dustveil-secondary
+                                :background ,dustveil-background))))
+ `(magit-diff-hunk-heading-highlight ((t (:foreground ,dustveil-secondary
+                                          :background
+                                          ,dustveil-surface))))
  `(magit-diff-added ((t (:foreground ,dustveil-accent))))
  `(magit-diff-added-highlight ((t (:foreground ,dustveil-accent
-                                               :background ,dustveil-surface))))
- `(magit-diff-removed ((t (:foreground ,dustveil-color-15))))
- `(magit-diff-removed-highlight ((t (:foreground ,dustveil-color-15
-                                                 :background
-                                                 ,dustveil-surface))))
- `(magit-diff-context ((t (:foreground ,dustveil-color-7))))
- `(magit-diff-context-highlight ((t (:foreground ,dustveil-foreground
-                                                 :background
-                                                 ,dustveil-surface))))
- `(magit-diff-our ((t (:foreground ,dustveil-color-15))))
- `(magit-diff-their ((t (:foreground ,dustveil-accent))))
- `(magit-diff-base ((t (:foreground ,dustveil-color-3))))
- `(magit-diff-base-highlight ((t (:foreground ,dustveil-color-3
-                                              :background
-                                              ,dustveil-surface))))
- `(magit-diffstat-added ((t (:foreground ,dustveil-accent))))
- `(magit-diffstat-removed ((t (:foreground ,dustveil-color-15))))
- `(git-commit-summary ((t (:foreground ,dustveil-color-15))))
- `(ediff-current-diff-A ((t (:foreground ,dustveil-color-15
-                                         :background ,dustveil-surface))))
- `(ediff-current-diff-B ((t (:foreground ,dustveil-accent
-                                         :background ,dustveil-surface))))
- `(ediff-current-diff-C ((t (:foreground ,dustveil-color-3
-                                         :background ,dustveil-surface))))
- `(ediff-current-diff-Ancestor ((t (:foreground ,dustveil-color-1
-                                                :background ,dustveil-surface
-                                                :box (:color ,dustveil-border)))))
- `(ediff-fine-diff-A ((t (:foreground ,dustveil-color-15 :bold t
-                                      :background ,dustveil-surface))))
- `(ediff-fine-diff-B ((t (:foreground ,dustveil-accent :bold t
-                                      :background ,dustveil-surface))))
- `(ediff-fine-diff-C ((t (:foreground ,dustveil-color-3 :bold t
-                                      :background ,dustveil-surface))))
- `(ediff-fine-diff-Ancestor ((t (:foreground ,dustveil-color-1
-                                             :background
-                                             ,dustveil-surface))))
- `(ediff-even-diff-A ((t (:foreground ,dustveil-color-7
-                                      :background ,dustveil-background))))
- `(ediff-even-diff-B ((t (:foreground ,dustveil-color-7
-                                      :background ,dustveil-background))))
- `(ediff-even-diff-C ((t (:foreground ,dustveil-color-7
-                                      :background ,dustveil-background))))
- `(ediff-even-diff-Ancestor ((t (:foreground ,dustveil-color-7
-                                             :background
-                                             ,dustveil-background))))
- `(ediff-odd-diff-A ((t (:foreground ,dustveil-foreground
-                                     :background ,dustveil-surface))))
- `(ediff-odd-diff-B ((t (:foreground ,dustveil-foreground
-                                     :background ,dustveil-surface))))
- `(ediff-odd-diff-C ((t (:foreground ,dustveil-foreground
-                                     :background ,dustveil-surface))))
- `(ediff-odd-diff-Ancestor ((t (:foreground ,dustveil-foreground
-                                            :background
-                                            ,dustveil-surface))))
- `(smerge-upper ((t (:foreground ,dustveil-color-15
-                                 :background ,dustveil-background))))
- `(smerge-lower ((t (:foreground ,dustveil-accent
-                                 :background ,dustveil-background))))
- `(smerge-base ((t (:foreground ,dustveil-color-3
-                                :background ,dustveil-background))))
- `(smerge-markers ((t (:foreground ,dustveil-color-1
                                    :background ,dustveil-surface))))
+ `(magit-diff-removed ((t (:foreground ,dustveil-foreground))))
+ `(magit-diff-removed-highlight ((t (:foreground ,dustveil-foreground
+                                     :background
+                                     ,dustveil-surface))))
+ `(magit-diff-context ((t (:foreground ,dustveil-syntax-keyword))))
+ `(magit-diff-context-highlight ((t (:foreground ,dustveil-foreground
+                                     :background
+                                     ,dustveil-surface))))
+ `(magit-diff-our ((t (:foreground ,dustveil-foreground))))
+ `(magit-diff-their ((t (:foreground ,dustveil-accent))))
+ `(magit-diff-base ((t (:foreground ,dustveil-syntax-literal))))
+ `(magit-diff-base-highlight ((t (:foreground ,dustveil-syntax-literal
+                                  :background
+                                  ,dustveil-surface))))
+ `(magit-diffstat-added ((t (:foreground ,dustveil-accent))))
+ `(magit-diffstat-removed ((t (:foreground ,dustveil-foreground))))
+ `(git-commit-summary ((t (:foreground ,dustveil-foreground))))
+ `(ediff-current-diff-A ((t (:foreground ,dustveil-foreground
+                             :background ,dustveil-surface))))
+ `(ediff-current-diff-B ((t (:foreground ,dustveil-accent
+                             :background ,dustveil-surface))))
+ `(ediff-current-diff-C ((t (:foreground ,dustveil-syntax-literal
+                             :background ,dustveil-surface))))
+ `(ediff-current-diff-Ancestor ((t (:foreground ,dustveil-secondary
+                                    :background ,dustveil-surface
+                                    :box (:color ,dustveil-border)))))
+ `(ediff-fine-diff-A ((t (:foreground ,dustveil-foreground :bold t
+                          :background ,dustveil-surface))))
+ `(ediff-fine-diff-B ((t (:foreground ,dustveil-accent :bold t
+                          :background ,dustveil-surface))))
+ `(ediff-fine-diff-C ((t (:foreground ,dustveil-syntax-literal :bold t
+                          :background ,dustveil-surface))))
+ `(ediff-fine-diff-Ancestor ((t (:foreground ,dustveil-secondary
+                                 :background
+                                 ,dustveil-surface))))
+ `(ediff-even-diff-A ((t (:foreground ,dustveil-syntax-keyword
+                          :background ,dustveil-background))))
+ `(ediff-even-diff-B ((t (:foreground ,dustveil-syntax-keyword
+                          :background ,dustveil-background))))
+ `(ediff-even-diff-C ((t (:foreground ,dustveil-syntax-keyword
+                          :background ,dustveil-background))))
+ `(ediff-even-diff-Ancestor ((t (:foreground ,dustveil-syntax-keyword
+                                 :background
+                                 ,dustveil-background))))
+ `(ediff-odd-diff-A ((t (:foreground ,dustveil-foreground
+                         :background ,dustveil-surface))))
+ `(ediff-odd-diff-B ((t (:foreground ,dustveil-foreground
+                         :background ,dustveil-surface))))
+ `(ediff-odd-diff-C ((t (:foreground ,dustveil-foreground
+                         :background ,dustveil-surface))))
+ `(ediff-odd-diff-Ancestor ((t (:foreground ,dustveil-foreground
+                                :background
+                                ,dustveil-surface))))
+ `(smerge-upper ((t (:foreground ,dustveil-foreground
+                     :background ,dustveil-background))))
+ `(smerge-lower ((t (:foreground ,dustveil-accent
+                     :background ,dustveil-background))))
+ `(smerge-base ((t (:foreground ,dustveil-syntax-literal
+                    :background ,dustveil-background))))
+ `(smerge-markers ((t (:foreground ,dustveil-secondary
+                       :background ,dustveil-surface))))
  `(smerge-refined-added ((t (:foreground ,dustveil-accent :bold t))))
- `(smerge-refined-removed ((t (:foreground ,dustveil-color-15 :bold t))))
- `(smerge-refined-changed ((t (:foreground ,dustveil-color-3 :bold t))))
- `(git-timemachine-commit ((t (:foreground ,dustveil-color-15 :bold t))))
- `(git-timemachine-minibuffer-author-face ((t (:foreground ,dustveil-color-6))))
+ `(smerge-refined-removed ((t (:foreground ,dustveil-foreground :bold t))))
+ `(smerge-refined-changed ((t (:foreground ,dustveil-syntax-literal :bold t))))
+ `(git-timemachine-commit ((t (:foreground ,dustveil-foreground :bold t))))
+ `(git-timemachine-minibuffer-author-face ((t (:foreground ,dustveil-syntax-variable))))
  `(git-timemachine-minibuffer-detail-face ((t (:foreground ,dustveil-foreground))))
 
  ;; --- org ---------------------------------------------------------------------------
@@ -591,263 +593,263 @@ Popup faces retain explicit backgrounds.  Reload the theme with
  ;; A TTY cannot use its unknown default background as an invisible foreground.
  `(org-hide ((t (:foreground ,dustveil-background))))
  `(org-document-title ((t (:foreground ,dustveil-accent :bold t :height 1.2))))
- `(org-document-info ((t (:foreground ,dustveil-color-1))))
+ `(org-document-info ((t (:foreground ,dustveil-secondary))))
  `(org-level-1 ((t (:foreground ,dustveil-accent :bold t))))
- `(org-level-2 ((t (:foreground ,dustveil-color-6 :bold t))))
- `(org-level-3 ((t (:foreground ,dustveil-color-3))))
+ `(org-level-2 ((t (:foreground ,dustveil-syntax-variable :bold t))))
+ `(org-level-3 ((t (:foreground ,dustveil-syntax-literal))))
  `(org-level-4 ((t (:foreground ,dustveil-foreground))))
- `(org-level-5 ((t (:foreground ,dustveil-color-3))))
- `(org-level-6 ((t (:foreground ,dustveil-color-6))))
- `(org-level-7 ((t (:foreground ,dustveil-color-7))))
- `(org-level-8 ((t (:foreground ,dustveil-color-1))))
+ `(org-level-5 ((t (:foreground ,dustveil-syntax-literal))))
+ `(org-level-6 ((t (:foreground ,dustveil-syntax-variable))))
+ `(org-level-7 ((t (:foreground ,dustveil-syntax-keyword))))
+ `(org-level-8 ((t (:foreground ,dustveil-secondary))))
  `(org-todo ((t (:foreground ,dustveil-accent :bold t))))
  `(org-done ((t (:foreground ,dustveil-accent :bold t))))
- `(+org-todo-active ((t (:foreground ,dustveil-color-3 :bold t))))
- `(+org-todo-onhold ((t (:foreground ,dustveil-color-5 :bold t))))
- `(+org-todo-cancel ((t (:foreground ,dustveil-color-1 :strike-through t))))
- `(+org-todo-project ((t (:foreground ,dustveil-color-3 :bold t))))
- `(org-priority ((t (:foreground ,dustveil-color-3))))
+ `(+org-todo-active ((t (:foreground ,dustveil-syntax-literal :bold t))))
+ `(+org-todo-onhold ((t (:foreground ,dustveil-syntax-variable :bold t))))
+ `(+org-todo-cancel ((t (:foreground ,dustveil-secondary :strike-through t))))
+ `(+org-todo-project ((t (:foreground ,dustveil-syntax-literal :bold t))))
+ `(org-priority ((t (:foreground ,dustveil-syntax-literal))))
  `(org-tag ((t (:inherit shadow))))
- `(org-date ((t (:foreground ,dustveil-color-7 :underline t))))
+ `(org-date ((t (:foreground ,dustveil-syntax-keyword :underline t))))
  `(org-special-keyword ((t (:inherit shadow))))
  `(org-meta-line ((t (:inherit shadow))))
  `(org-drawer ((t (:inherit shadow))))
- `(org-property-value ((t (:foreground ,dustveil-color-7))))
- `(org-table ((t (:foreground ,dustveil-color-7))))
- `(org-formula ((t (:foreground ,dustveil-color-3))))
+ `(org-property-value ((t (:foreground ,dustveil-syntax-keyword))))
+ `(org-table ((t (:foreground ,dustveil-syntax-keyword))))
+ `(org-formula ((t (:foreground ,dustveil-syntax-literal))))
  `(org-block ((t (:background ,dustveil-background :extend t))))
- `(org-block-begin-line ((t (:foreground ,dustveil-color-1
-                                          :background ,dustveil-background
-                                          :extend t))))
+ `(org-block-begin-line ((t (:foreground ,dustveil-secondary
+                             :background ,dustveil-background
+                             :extend t))))
  `(org-block-end-line ((t (:inherit org-block-begin-line))))
- `(org-code ((t (:foreground ,dustveil-color-7
-                             :background ,dustveil-background :extend nil))))
+ `(org-code ((t (:foreground ,dustveil-syntax-keyword
+                 :background ,dustveil-background :extend nil))))
  `(org-inline-src-block ((t (:inherit org-block :extend nil))))
- `(org-verbatim ((t (:foreground ,dustveil-color-7))))
+ `(org-verbatim ((t (:foreground ,dustveil-syntax-keyword))))
  `(org-quote ((t (:inherit org-block :slant italic :extend t))))
- `(org-headline-done ((t (:foreground ,dustveil-color-1))))
+ `(org-headline-done ((t (:foreground ,dustveil-secondary))))
  `(org-checkbox ((t (:foreground ,dustveil-accent :bold t))))
  `(org-link ((t (:foreground ,dustveil-accent :underline t))))
- `(org-footnote ((t (:foreground ,dustveil-color-1))))
- `(org-ellipsis ((t (:foreground ,dustveil-color-1))))
+ `(org-footnote ((t (:foreground ,dustveil-secondary))))
+ `(org-ellipsis ((t (:foreground ,dustveil-secondary))))
  `(org-column ((t (:background ,dustveil-surface))))
  `(org-column-title ((t (:foreground ,dustveil-accent :bold t
-                                      :background ,dustveil-surface))))
+                         :background ,dustveil-surface))))
  `(org-clock-overlay ((t (:background ,dustveil-surface))))
  `(org-agenda-clocking ((t (:background ,dustveil-surface))))
- `(org-agenda-structure ((t (:foreground ,dustveil-color-3 :bold t))))
- `(org-agenda-date ((t (:foreground ,dustveil-color-6))))
+ `(org-agenda-structure ((t (:foreground ,dustveil-syntax-literal :bold t))))
+ `(org-agenda-date ((t (:foreground ,dustveil-syntax-variable))))
  `(org-agenda-date-today ((t (:foreground ,dustveil-accent :bold t))))
- `(org-agenda-date-weekend ((t (:foreground ,dustveil-color-7))))
- `(org-agenda-done ((t (:foreground ,dustveil-color-1))))
+ `(org-agenda-date-weekend ((t (:foreground ,dustveil-syntax-keyword))))
+ `(org-agenda-done ((t (:foreground ,dustveil-secondary))))
  `(org-scheduled ((t (:foreground ,dustveil-foreground))))
  `(org-scheduled-today ((t (:foreground ,dustveil-accent))))
  `(org-imminent-deadline ((t (:inherit org-warning))))
- `(org-upcoming-deadline ((t (:foreground ,dustveil-color-3))))
+ `(org-upcoming-deadline ((t (:foreground ,dustveil-syntax-literal))))
  `(org-time-grid ((t (:inherit shadow))))
- `(org-warning ((t (:foreground ,dustveil-color-15 :bold t))))
+ `(org-warning ((t (:foreground ,dustveil-foreground :bold t))))
 
  ;; --- markdown -------------------------------------------------------------------------
  `(markdown-header-face-1 ((t (:foreground ,dustveil-accent :bold t))))
- `(markdown-header-face-2 ((t (:foreground ,dustveil-color-7 :bold t))))
- `(markdown-header-face-3 ((t (:foreground ,dustveil-color-3))))
- `(markdown-header-face-4 ((t (:foreground ,dustveil-color-6))))
- `(markdown-header-face-5 ((t (:foreground ,dustveil-color-3))))
- `(markdown-header-face-6 ((t (:foreground ,dustveil-color-6))))
- `(markdown-header-delimiter-face ((t (:foreground ,dustveil-color-1))))
- `(markdown-header-rule-face ((t (:foreground ,dustveil-color-1))))
- `(markdown-hr-face ((t (:foreground ,dustveil-color-1))))
- `(markdown-blockquote-face ((t (:foreground ,dustveil-color-3 :italic t))))
+ `(markdown-header-face-2 ((t (:foreground ,dustveil-syntax-keyword :bold t))))
+ `(markdown-header-face-3 ((t (:foreground ,dustveil-syntax-literal))))
+ `(markdown-header-face-4 ((t (:foreground ,dustveil-syntax-variable))))
+ `(markdown-header-face-5 ((t (:foreground ,dustveil-syntax-literal))))
+ `(markdown-header-face-6 ((t (:foreground ,dustveil-syntax-variable))))
+ `(markdown-header-delimiter-face ((t (:foreground ,dustveil-secondary))))
+ `(markdown-header-rule-face ((t (:foreground ,dustveil-secondary))))
+ `(markdown-hr-face ((t (:foreground ,dustveil-secondary))))
+ `(markdown-blockquote-face ((t (:foreground ,dustveil-syntax-literal :italic t))))
  `(markdown-code-face ((t (:background ,dustveil-background
-                                       :foreground ,dustveil-color-15
-                                       :inherit fixed-pitch :extend nil))))
+                           :foreground ,dustveil-foreground
+                           :inherit fixed-pitch :extend nil))))
  `(markdown-pre-face ((t (:inherit markdown-code-face :extend t))))
  `(markdown-inline-code-face ((t (:inherit markdown-code-face
-                                 :foreground ,dustveil-color-7 :extend nil))))
- `(markdown-language-keyword-face ((t (:foreground ,dustveil-color-3))))
- `(markdown-markup-face ((t (:foreground ,dustveil-color-1))))
- `(markdown-list-face ((t (:foreground ,dustveil-color-7))))
- `(markdown-link-face ((t (:foreground ,dustveil-color-6 :underline t))))
- `(markdown-url-face ((t (:foreground ,dustveil-color-6 :underline t))))
- `(markdown-plain-url-face ((t (:foreground ,dustveil-color-6 :underline t))))
- `(markdown-reference-face ((t (:foreground ,dustveil-color-6))))
- `(markdown-footnote-marker-face ((t (:foreground ,dustveil-color-1))))
- `(markdown-metadata-key-face ((t (:foreground ,dustveil-color-3))))
- `(markdown-metadata-value-face ((t (:foreground ,dustveil-color-7))))
+                                  :foreground ,dustveil-syntax-keyword :extend nil))))
+ `(markdown-language-keyword-face ((t (:foreground ,dustveil-syntax-literal))))
+ `(markdown-markup-face ((t (:foreground ,dustveil-secondary))))
+ `(markdown-list-face ((t (:foreground ,dustveil-syntax-keyword))))
+ `(markdown-link-face ((t (:foreground ,dustveil-syntax-variable :underline t))))
+ `(markdown-url-face ((t (:foreground ,dustveil-syntax-variable :underline t))))
+ `(markdown-plain-url-face ((t (:foreground ,dustveil-syntax-variable :underline t))))
+ `(markdown-reference-face ((t (:foreground ,dustveil-syntax-variable))))
+ `(markdown-footnote-marker-face ((t (:foreground ,dustveil-secondary))))
+ `(markdown-metadata-key-face ((t (:foreground ,dustveil-syntax-literal))))
+ `(markdown-metadata-value-face ((t (:foreground ,dustveil-syntax-keyword))))
  `(markdown-gfm-checkbox-face ((t (:foreground ,dustveil-accent :bold t))))
- `(markdown-math-face ((t (:foreground ,dustveil-color-6))))
- `(markdown-missing-link-face ((t (:foreground ,dustveil-color-15))))
+ `(markdown-math-face ((t (:foreground ,dustveil-syntax-variable))))
+ `(markdown-missing-link-face ((t (:foreground ,dustveil-foreground))))
  `(markdown-comment-face ((t (:inherit font-lock-comment-face))))
- `(markdown-strike-through-face ((t (:foreground ,dustveil-color-1
-                                                 :strike-through t))))
+ `(markdown-strike-through-face ((t (:foreground ,dustveil-secondary
+                                     :strike-through t))))
 
  ;; --- info, help, custom, compilation --------------------------------------------------
- `(info-title-1 ((t (:foreground ,dustveil-color-3 :bold t))))
- `(info-title-2 ((t (:foreground ,dustveil-color-3))))
+ `(info-title-1 ((t (:foreground ,dustveil-syntax-literal :bold t))))
+ `(info-title-2 ((t (:foreground ,dustveil-syntax-literal))))
  `(info-title-3 ((t (:foreground ,dustveil-accent))))
  `(info-title-4 ((t (:foreground ,dustveil-accent))))
  `(info-menu-header ((t (:foreground ,dustveil-accent :bold t))))
  `(info-menu-star ((t (:foreground ,dustveil-accent))))
  `(info-node ((t (:foreground ,dustveil-accent :bold t))))
- `(info-header-node ((t (:foreground ,dustveil-color-1))))
- `(info-header-xref ((t (:foreground ,dustveil-color-6 :underline t))))
- `(info-xref ((t (:foreground ,dustveil-color-6 :underline t))))
- `(info-xref-visited ((t (:foreground ,dustveil-color-3 :underline t))))
+ `(info-header-node ((t (:foreground ,dustveil-secondary))))
+ `(info-header-xref ((t (:foreground ,dustveil-syntax-variable :underline t))))
+ `(info-xref ((t (:foreground ,dustveil-syntax-variable :underline t))))
+ `(info-xref-visited ((t (:foreground ,dustveil-syntax-literal :underline t))))
  `(info-index-match ((t (:inherit isearch))))
- `(help-argument-name ((t (:foreground ,dustveil-color-6 :italic t))))
+ `(help-argument-name ((t (:foreground ,dustveil-syntax-variable :italic t))))
  `(help-key-binding ((t (:background ,dustveil-background
-                                      :foreground ,dustveil-color-15 :bold t))))
+                         :foreground ,dustveil-foreground :bold t))))
  `(widget-field ((t (:background ,dustveil-background :box (:color ,dustveil-border)
-                                 :foreground ,dustveil-foreground))))
+                     :foreground ,dustveil-foreground))))
  `(widget-single-line-field ((t (:background ,dustveil-background :box (:color ,dustveil-border)
-                                             :foreground ,dustveil-foreground))))
+                                 :foreground ,dustveil-foreground))))
  `(widget-button ((t (:foreground ,dustveil-accent :bold t))))
  `(custom-variable-tag ((t (:foreground ,dustveil-accent :bold t))))
- `(custom-face-tag ((t (:foreground ,dustveil-color-3))))
- `(custom-group-tag ((t (:foreground ,dustveil-color-3 :bold t))))
+ `(custom-face-tag ((t (:foreground ,dustveil-syntax-literal))))
+ `(custom-group-tag ((t (:foreground ,dustveil-syntax-literal :bold t))))
  `(custom-state ((t (:foreground ,dustveil-accent))))
  `(custom-comment ((t (:inherit font-lock-comment-face))))
- `(custom-comment-tag ((t (:foreground ,dustveil-color-1))))
- `(custom-documentation ((t (:foreground ,dustveil-color-7))))
+ `(custom-comment-tag ((t (:foreground ,dustveil-secondary))))
+ `(custom-documentation ((t (:foreground ,dustveil-syntax-keyword))))
  `(compilation-error ((t (:inherit error))))
  `(compilation-warning ((t (:inherit warning))))
- `(compilation-info ((t (:foreground ,dustveil-color-5))))
+ `(compilation-info ((t (:foreground ,dustveil-syntax-variable))))
  `(compilation-line-number ((t (:inherit shadow))))
  `(compilation-column-number ((t (:inherit shadow))))
- `(compilation-mode-line-fail ((t (:foreground ,dustveil-color-15 :bold t))))
+ `(compilation-mode-line-fail ((t (:foreground ,dustveil-foreground :bold t))))
  `(compilation-mode-line-exit ((t (:foreground ,dustveil-accent :bold t))))
- `(compilation-mode-line-run ((t (:foreground ,dustveil-color-3 :bold t))))
+ `(compilation-mode-line-run ((t (:foreground ,dustveil-syntax-literal :bold t))))
  `(whitespace-trailing ((t (:background ,dustveil-surface))))
  `(whitespace-line ((t (:background ,dustveil-surface
-                                    :foreground ,dustveil-color-3))))
- `(whitespace-space ((t (:foreground ,dustveil-color-0))))
- `(whitespace-hspace ((t (:foreground ,dustveil-color-0))))
- `(whitespace-tab ((t (:foreground ,dustveil-color-0))))
- `(whitespace-newline ((t (:foreground ,dustveil-color-0))))
- `(whitespace-indentation ((t (:foreground ,dustveil-color-0))))
- `(whitespace-empty ((t (:foreground ,dustveil-color-0))))
+                        :foreground ,dustveil-syntax-literal))))
+ `(whitespace-space ((t (:foreground ,dustveil-secondary))))
+ `(whitespace-hspace ((t (:foreground ,dustveil-secondary))))
+ `(whitespace-tab ((t (:foreground ,dustveil-secondary))))
+ `(whitespace-newline ((t (:foreground ,dustveil-secondary))))
+ `(whitespace-indentation ((t (:foreground ,dustveil-secondary))))
+ `(whitespace-empty ((t (:foreground ,dustveil-secondary))))
 
  ;; --- evil, search previews -----------------------------------------------------------
  `(evil-ex-substitute-matches ((t (:background ,dustveil-foreground :foreground ,dustveil-background :extend t))))
  `(evil-ex-substitute-replacement ((t (:foreground ,dustveil-accent))))
  `(evil-search-highlight-persist-highlight-face ((t (:background ,dustveil-foreground :foreground ,dustveil-background :extend t))))
  `(evil-traces-default ((t (:background ,dustveil-surface
-                                        :foreground ,dustveil-foreground))))
+                            :foreground ,dustveil-foreground))))
  `(evil-traces-global-match ((t (:background ,dustveil-surface
-                                             :foreground ,dustveil-color-15
-                                             :strike-through t))))
+                                 :foreground ,dustveil-foreground
+                                 :strike-through t))))
  `(evil-traces-global-range ((t (:background ,dustveil-surface
-                                             :foreground ,dustveil-color-15))))
+                                 :foreground ,dustveil-foreground))))
  `(evil-traces-substitute-range ((t (:background ,dustveil-surface
-                                                 :foreground
-                                                 ,dustveil-color-15))))
- `(evil-traces-delete ((t (:background ,dustveil-color-15
-                                       :foreground ,dustveil-background :bold t))))
+                                     :foreground
+                                     ,dustveil-foreground))))
+ `(evil-traces-delete ((t (:background ,dustveil-foreground
+                           :foreground ,dustveil-background :bold t))))
  `(evil-traces-change ((t (:background ,dustveil-foreground
-                                       :foreground ,dustveil-background :bold t))))
+                           :foreground ,dustveil-background :bold t))))
  `(evil-traces-yank ((t (:background ,dustveil-accent
-                                     :foreground ,dustveil-background :bold t))))
+                         :foreground ,dustveil-background :bold t))))
  `(evil-traces-copy-preview ((t (:background ,dustveil-surface
-                                             :foreground ,dustveil-color-15))))
+                                 :foreground ,dustveil-foreground))))
  `(evil-traces-copy-range ((t (:background ,dustveil-surface
-                                           :foreground ,dustveil-color-15))))
+                               :foreground ,dustveil-foreground))))
  `(evil-traces-move-preview ((t (:background ,dustveil-surface))))
  `(evil-traces-move-range ((t (:background ,dustveil-surface))))
  `(evil-traces-normal ((t (:foreground ,dustveil-foreground))))
  `(evil-goggles-default-face ((t (:background ,dustveil-surface
-                                              :foreground ,dustveil-color-15))))
- `(evil-goggles-delete-face ((t (:background ,dustveil-color-15
-                                             :foreground ,dustveil-background))))
+                                  :foreground ,dustveil-foreground))))
+ `(evil-goggles-delete-face ((t (:background ,dustveil-foreground
+                                 :foreground ,dustveil-background))))
  `(evil-goggles-change-face ((t (:background ,dustveil-foreground
-                                             :foreground ,dustveil-background))))
+                                 :foreground ,dustveil-background))))
  `(evil-goggles-yank-face ((t (:background ,dustveil-accent
-                                           :foreground ,dustveil-background))))
- `(evil-goggles-paste-face ((t (:background ,dustveil-color-5
-                                            :foreground ,dustveil-background))))
+                               :foreground ,dustveil-background))))
+ `(evil-goggles-paste-face ((t (:background ,dustveil-syntax-variable
+                                :foreground ,dustveil-background))))
  `(evil-goggles-replace-with-register-face ((t (:background ,dustveil-foreground
-                                                           :foreground ,dustveil-background))))
+                                                :foreground ,dustveil-background))))
  `(evil-goggles-surround-face ((t (:background ,dustveil-foreground
-                                               :foreground ,dustveil-background))))
+                                   :foreground ,dustveil-background))))
  `(evil-snipe-first-match-face ((t (:background ,dustveil-foreground
-                                                :foreground ,dustveil-background
-                                                :bold t))))
+                                    :foreground ,dustveil-background
+                                    :bold t))))
  `(evil-snipe-matches-face ((t (:background ,dustveil-surface
-                                            :foreground ,dustveil-color-15))))
+                                :foreground ,dustveil-foreground))))
  `(anzu-mode-line ((t (:foreground ,dustveil-accent :bold t))))
- `(anzu-mode-line-no-match ((t (:foreground ,dustveil-color-15 :bold t))))
+ `(anzu-mode-line-no-match ((t (:foreground ,dustveil-foreground :bold t))))
  `(anzu-replace-highlight ((t (:background ,dustveil-surface
-                                           :foreground ,dustveil-color-15))))
+                               :foreground ,dustveil-foreground))))
  `(anzu-replace-to ((t (:foreground ,dustveil-accent :bold t))))
  `(anzu-match-1 ((t (:foreground ,dustveil-accent))))
- `(anzu-match-2 ((t (:foreground ,dustveil-color-3))))
- `(anzu-match-3 ((t (:foreground ,dustveil-color-6))))
+ `(anzu-match-2 ((t (:foreground ,dustveil-syntax-literal))))
+ `(anzu-match-3 ((t (:foreground ,dustveil-syntax-variable))))
  `(iedit-occurrence ((t (:background ,dustveil-surface
-                                     :foreground ,dustveil-color-15 :bold t))))
+                         :foreground ,dustveil-foreground :bold t))))
  `(iedit-read-only-occurrence ((t (:background ,dustveil-surface
-                                               :foreground ,dustveil-color-1
-                                               :italic t))))
+                                   :foreground ,dustveil-secondary
+                                   :italic t))))
 
  ;; --- navigation -------------------------------------------------------------------------
  `(avy-lead-face ((t (:background ,dustveil-foreground
-                                  :foreground ,dustveil-background :bold t))))
+                      :foreground ,dustveil-background :bold t))))
  `(avy-lead-face-0 ((t (:background ,dustveil-foreground
-                                    :foreground ,dustveil-background :bold t))))
+                        :foreground ,dustveil-background :bold t))))
  `(avy-lead-face-1 ((t (:background ,dustveil-surface
-                                    :foreground ,dustveil-color-15 :bold t))))
+                        :foreground ,dustveil-foreground :bold t))))
  `(avy-lead-face-2 ((t (:background ,dustveil-surface
-                                    :foreground ,dustveil-color-15 :bold t))))
- `(avy-background-face ((t (:foreground ,dustveil-color-1))))
+                        :foreground ,dustveil-foreground :bold t))))
+ `(avy-background-face ((t (:foreground ,dustveil-secondary))))
  `(avy-goto-char-timer-face ((t (:background ,dustveil-surface
-                                             :foreground
-                                             ,dustveil-color-15 :bold t))))
+                                 :foreground
+                                 ,dustveil-foreground :bold t))))
  `(aw-leading-char-face ((t (:foreground ,dustveil-accent :bold t))))
- `(aw-background-face ((t (:foreground ,dustveil-color-1))))
+ `(aw-background-face ((t (:foreground ,dustveil-secondary))))
  `(aw-mode-line-face ((t (:foreground ,dustveil-accent :bold t))))
  `(aw-minibuffer-leading-char-face ((t (:foreground ,dustveil-accent
-                                                    :bold t))))
+                                        :bold t))))
 
  ;; --- misc ui ------------------------------------------------------------------------------
  `(hl-todo ((t (:foreground ,dustveil-accent :bold t))))
  `(link ((t (:foreground ,dustveil-accent :underline t))))
- `(link-visited ((t (:foreground ,dustveil-color-3 :underline t))))
+ `(link-visited ((t (:foreground ,dustveil-syntax-literal :underline t))))
  `(tooltip ((t (:background ,dustveil-background
-                            :foreground ,dustveil-foreground))))
+                :foreground ,dustveil-foreground))))
  `(popup-face ((t (:background ,dustveil-background
-                               :foreground ,dustveil-foreground))))
+                   :foreground ,dustveil-foreground))))
  `(popup-tip-face ((t (:background ,dustveil-surface
-                                   :foreground ,dustveil-accent))))
+                       :foreground ,dustveil-accent))))
  `(popup-menu-selection-face ((t (:background ,dustveil-surface :foreground ,dustveil-foreground
-                                             :box (:color ,dustveil-accent) :extend t))))
+                                  :box (:color ,dustveil-accent) :extend t))))
  `(popup-menu-summary-face ((t (:inherit shadow))))
- `(child-frame-border ((t (:background ,dustveil-color-1))))
+ `(child-frame-border ((t (:background ,dustveil-secondary))))
  `(nav-flash-face ((t (:background ,dustveil-surface
-                                   :foreground ,dustveil-accent))))
+                       :foreground ,dustveil-accent))))
  `(which-key-key-face ((t (:foreground ,dustveil-accent :bold t))))
  `(which-key-command-description-face ((t (:foreground ,dustveil-foreground))))
- `(which-key-group-description-face ((t (:foreground ,dustveil-color-1))))
+ `(which-key-group-description-face ((t (:foreground ,dustveil-secondary))))
  `(which-key-special-key-face ((t (:foreground ,dustveil-accent :bold t))))
- `(which-key-separator-face ((t (:foreground ,dustveil-color-1))))
+ `(which-key-separator-face ((t (:foreground ,dustveil-secondary))))
  `(which-key-note-face ((t (:inherit shadow :italic t))))
  `(dashboard-banner-logo-title ((t (:foreground ,dustveil-accent :bold t))))
  `(doom-dashboard-default ((t (:background ,dustveil-background :foreground ,dustveil-foreground))))
  `(dashboard-items-face ((t (:foreground ,dustveil-foreground))))
  `(dashboard-heading ((t (:foreground ,dustveil-accent :bold t))))
- `(dashboard-navigator-face ((t (:foreground ,dustveil-color-6))))
+ `(dashboard-navigator-face ((t (:foreground ,dustveil-syntax-variable))))
  `(transient-key ((t (:foreground ,dustveil-accent :bold t))))
- `(transient-heading ((t (:foreground ,dustveil-color-3 :bold t))))
- `(transient-argument ((t (:foreground ,dustveil-color-6))))
- `(transient-value ((t (:foreground ,dustveil-color-3))))
+ `(transient-heading ((t (:foreground ,dustveil-syntax-literal :bold t))))
+ `(transient-argument ((t (:foreground ,dustveil-syntax-variable))))
+ `(transient-value ((t (:foreground ,dustveil-syntax-literal))))
  `(transient-inactive-argument ((t (:inherit shadow))))
  `(transient-inactive-value ((t (:inherit shadow))))
- `(transient-unreachable ((t (:foreground ,dustveil-color-1 :strike-through t))))
- `(transient-unreachable-key ((t (:foreground ,dustveil-color-1))))
+ `(transient-unreachable ((t (:foreground ,dustveil-secondary :strike-through t))))
+ `(transient-unreachable-key ((t (:foreground ,dustveil-secondary))))
  `(vundo-default ((t (:foreground ,dustveil-foreground))))
  `(vundo-highlight ((t (:foreground ,dustveil-accent :bold t))))
- `(vundo-stem ((t (:foreground ,dustveil-color-0))))
+ `(vundo-stem ((t (:foreground ,dustveil-secondary))))
  `(vundo-saved ((t (:foreground ,dustveil-accent))))
  `(vundo-last-saved ((t (:foreground ,dustveil-accent :bold t))))
- `(treesit-fold-fringe-face ((t (:foreground ,dustveil-color-1))))
- `(treesit-fold-replacement-face ((t (:foreground ,dustveil-color-1))))
+ `(treesit-fold-fringe-face ((t (:foreground ,dustveil-secondary))))
+ `(treesit-fold-replacement-face ((t (:foreground ,dustveil-secondary))))
  `(macrostep-expansion-highlight-face ((t (:background ,dustveil-surface))))
  `(macrostep-macro-face ((t (:foreground ,dustveil-foreground :bold t))))
  `(macrostep-compiler-macro-face ((t (:foreground ,dustveil-foreground :bold t))))
@@ -856,114 +858,114 @@ Popup faces retain explicit backgrounds.  Reload the theme with
  `(macrostep-gensym-3 ((t (:foreground ,dustveil-foreground))))
  `(macrostep-gensym-4 ((t (:foreground ,dustveil-foreground))))
  `(macrostep-gensym-5 ((t (:foreground ,dustveil-foreground))))
- `(wgrep-face ((t (:foreground ,dustveil-color-3))))
+ `(wgrep-face ((t (:foreground ,dustveil-syntax-literal))))
  `(wgrep-done-face ((t (:foreground ,dustveil-accent))))
- `(wgrep-delete-face ((t (:foreground ,dustveil-color-15 :strike-through t))))
+ `(wgrep-delete-face ((t (:foreground ,dustveil-foreground :strike-through t))))
  `(wgrep-file-face ((t (:foreground ,dustveil-foreground))))
- `(wgrep-reject-face ((t (:foreground ,dustveil-color-15 :bold t))))
+ `(wgrep-reject-face ((t (:foreground ,dustveil-foreground :bold t))))
  `(highlight-quoted-quote ((t (:foreground ,dustveil-foreground))))
  `(highlight-quoted-symbol ((t (:foreground ,dustveil-foreground))))
  `(eros-result-overlay-face ((t (:background ,dustveil-background
-                                             :foreground ,dustveil-color-7))))
+                                 :foreground ,dustveil-syntax-keyword))))
  `(yas-field-highlight-face ((t (:background ,dustveil-surface))))
- `(dape-breakpoint-face ((t (:background ,dustveil-color-15
-                                         :foreground ,dustveil-background))))
+ `(dape-breakpoint-face ((t (:background ,dustveil-foreground
+                             :foreground ,dustveil-background))))
  `(dape-breakpoint-until-face ((t (:background ,dustveil-foreground
-                                               :foreground ,dustveil-background))))
+                                   :foreground ,dustveil-background))))
  `(dape-source-line-face ((t (:background ,dustveil-surface
-                                          :foreground ,dustveil-color-15))))
- `(dape-expression-face ((t (:foreground ,dustveil-color-7))))
- `(dape-inlay-hint-face ((t (:foreground ,dustveil-color-1
-                                         :background ,dustveil-surface
-                                         :italic t))))
- `(dape-repl-error-face ((t (:foreground ,dustveil-color-15))))
+                              :foreground ,dustveil-foreground))))
+ `(dape-expression-face ((t (:foreground ,dustveil-syntax-keyword))))
+ `(dape-inlay-hint-face ((t (:foreground ,dustveil-secondary
+                             :background ,dustveil-surface
+                             :italic t))))
+ `(dape-repl-error-face ((t (:foreground ,dustveil-foreground))))
  `(dape-log-face ((t (:inherit shadow))))
  `(dape-header-line-active-face ((t (:background ,dustveil-foreground
-                                                 :foreground ,dustveil-background))))
+                                     :foreground ,dustveil-background))))
  `(dape-header-line-inactive-face ((t (:background ,dustveil-background
-                                                   :foreground
-                                                   ,dustveil-color-1))))
+                                       :foreground
+                                       ,dustveil-secondary))))
  `(dape-hits-face ((t (:foreground ,dustveil-accent))))
 
  ;; --- nerd-icons -------------------------------------------------------------------------------
- `(nerd-icons-blue ((t (:foreground ,dustveil-color-6))))
- `(nerd-icons-blue-alt ((t (:foreground ,dustveil-color-6))))
- `(nerd-icons-cyan ((t (:foreground ,dustveil-color-6))))
- `(nerd-icons-cyan-alt ((t (:foreground ,dustveil-color-6))))
- `(nerd-icons-green ((t (:foreground ,dustveil-color-7))))
+ `(nerd-icons-blue ((t (:foreground ,dustveil-syntax-variable))))
+ `(nerd-icons-blue-alt ((t (:foreground ,dustveil-syntax-variable))))
+ `(nerd-icons-cyan ((t (:foreground ,dustveil-syntax-variable))))
+ `(nerd-icons-cyan-alt ((t (:foreground ,dustveil-syntax-variable))))
+ `(nerd-icons-green ((t (:foreground ,dustveil-syntax-keyword))))
  `(nerd-icons-orange ((t (:foreground ,dustveil-accent))))
- `(nerd-icons-purple ((t (:foreground ,dustveil-color-3))))
- `(nerd-icons-purple-alt ((t (:foreground ,dustveil-color-3))))
- `(nerd-icons-red ((t (:foreground ,dustveil-color-5))))
- `(nerd-icons-red-alt ((t (:foreground ,dustveil-color-5))))
- `(nerd-icons-yellow ((t (:foreground ,dustveil-color-3))))
- `(nerd-icons-pink ((t (:foreground ,dustveil-color-3))))
- `(nerd-icons-maroon ((t (:foreground ,dustveil-color-5))))
- `(nerd-icons-silver ((t (:foreground ,dustveil-color-1))))
- `(nerd-icons-dblue ((t (:foreground ,dustveil-color-6))))
- `(nerd-icons-dcyan ((t (:foreground ,dustveil-color-6))))
- `(nerd-icons-dgreen ((t (:foreground ,dustveil-color-7))))
+ `(nerd-icons-purple ((t (:foreground ,dustveil-syntax-literal))))
+ `(nerd-icons-purple-alt ((t (:foreground ,dustveil-syntax-literal))))
+ `(nerd-icons-red ((t (:foreground ,dustveil-syntax-variable))))
+ `(nerd-icons-red-alt ((t (:foreground ,dustveil-syntax-variable))))
+ `(nerd-icons-yellow ((t (:foreground ,dustveil-syntax-literal))))
+ `(nerd-icons-pink ((t (:foreground ,dustveil-syntax-literal))))
+ `(nerd-icons-maroon ((t (:foreground ,dustveil-syntax-variable))))
+ `(nerd-icons-silver ((t (:foreground ,dustveil-secondary))))
+ `(nerd-icons-dblue ((t (:foreground ,dustveil-syntax-variable))))
+ `(nerd-icons-dcyan ((t (:foreground ,dustveil-syntax-variable))))
+ `(nerd-icons-dgreen ((t (:foreground ,dustveil-syntax-keyword))))
  `(nerd-icons-dorange ((t (:foreground ,dustveil-accent))))
- `(nerd-icons-dpurple ((t (:foreground ,dustveil-color-3))))
- `(nerd-icons-dpink ((t (:foreground ,dustveil-color-3))))
- `(nerd-icons-dred ((t (:foreground ,dustveil-color-5))))
- `(nerd-icons-dyellow ((t (:foreground ,dustveil-color-3))))
- `(nerd-icons-dsilver ((t (:foreground ,dustveil-color-1))))
- `(nerd-icons-lblue ((t (:foreground ,dustveil-color-6))))
- `(nerd-icons-lcyan ((t (:foreground ,dustveil-color-6))))
- `(nerd-icons-lgreen ((t (:foreground ,dustveil-color-7))))
+ `(nerd-icons-dpurple ((t (:foreground ,dustveil-syntax-literal))))
+ `(nerd-icons-dpink ((t (:foreground ,dustveil-syntax-literal))))
+ `(nerd-icons-dred ((t (:foreground ,dustveil-syntax-variable))))
+ `(nerd-icons-dyellow ((t (:foreground ,dustveil-syntax-literal))))
+ `(nerd-icons-dsilver ((t (:foreground ,dustveil-secondary))))
+ `(nerd-icons-lblue ((t (:foreground ,dustveil-syntax-variable))))
+ `(nerd-icons-lcyan ((t (:foreground ,dustveil-syntax-variable))))
+ `(nerd-icons-lgreen ((t (:foreground ,dustveil-syntax-keyword))))
  `(nerd-icons-lorange ((t (:foreground ,dustveil-accent))))
- `(nerd-icons-lpurple ((t (:foreground ,dustveil-color-3))))
- `(nerd-icons-lpink ((t (:foreground ,dustveil-color-3))))
- `(nerd-icons-lred ((t (:foreground ,dustveil-color-5))))
- `(nerd-icons-lyellow ((t (:foreground ,dustveil-color-3))))
- `(nerd-icons-lsilver ((t (:foreground ,dustveil-color-15))))
+ `(nerd-icons-lpurple ((t (:foreground ,dustveil-syntax-literal))))
+ `(nerd-icons-lpink ((t (:foreground ,dustveil-syntax-literal))))
+ `(nerd-icons-lred ((t (:foreground ,dustveil-syntax-variable))))
+ `(nerd-icons-lyellow ((t (:foreground ,dustveil-syntax-literal))))
+ `(nerd-icons-lsilver ((t (:foreground ,dustveil-foreground))))
 
  ;; --- lsp-mode -----------------------------------------------------------------------------------
  `(lsp-face-highlight-read ((t (:background ,dustveil-surface))))
  `(lsp-face-highlight-textual ((t (:background ,dustveil-surface))))
  `(lsp-face-highlight-write ((t (:background ,dustveil-surface
-                                             :box (:color ,dustveil-accent)))))
+                                 :box (:color ,dustveil-accent)))))
  `(lsp-face-rename ((t (:background ,dustveil-surface))))
  `(lsp-ui-doc-background ((t (:background ,dustveil-background))))
- `(lsp-inlay-hint-face ((t (:foreground ,dustveil-color-1
-                                        :background ,dustveil-surface
-                                        :italic t))))
- `(lsp-inlay-hint-parameter-face ((t (:foreground ,dustveil-color-1
-                                                 :background
-                                                 ,dustveil-surface
-                                                 :italic t))))
- `(lsp-inlay-hint-type-face ((t (:foreground ,dustveil-color-1
-                                             :background ,dustveil-surface
-                                             :italic t))))
+ `(lsp-inlay-hint-face ((t (:foreground ,dustveil-secondary
+                            :background ,dustveil-surface
+                            :italic t))))
+ `(lsp-inlay-hint-parameter-face ((t (:foreground ,dustveil-secondary
+                                      :background
+                                      ,dustveil-surface
+                                      :italic t))))
+ `(lsp-inlay-hint-type-face ((t (:foreground ,dustveil-secondary
+                                 :background ,dustveil-surface
+                                 :italic t))))
  `(lsp-lens-face ((t (:inherit shadow))))
  `(lsp-details-face ((t (:inherit shadow :italic t))))
- `(lsp-modeline-code-actions-face ((t (:foreground ,dustveil-color-3))))
- `(lsp-signature-face ((t (:foreground ,dustveil-color-7 :italic t))))
+ `(lsp-modeline-code-actions-face ((t (:foreground ,dustveil-syntax-literal))))
+ `(lsp-signature-face ((t (:foreground ,dustveil-syntax-keyword :italic t))))
  `(lsp-signature-highlight-function-argument ((t (:foreground
                                                   ,dustveil-accent :bold t))))
  `(lsp-signature-posframe ((t (:background ,dustveil-background
-                                           :foreground ,dustveil-foreground))))
- `(lsp-headerline-breadcrumb-path-face ((t (:foreground ,dustveil-color-1))))
+                               :foreground ,dustveil-foreground))))
+ `(lsp-headerline-breadcrumb-path-face ((t (:foreground ,dustveil-secondary))))
  `(lsp-headerline-breadcrumb-symbols-face ((t (:foreground ,dustveil-accent))))
- `(lsp-headerline-breadcrumb-separator-face ((t (:foreground ,dustveil-color-1))))
+ `(lsp-headerline-breadcrumb-separator-face ((t (:foreground ,dustveil-secondary))))
  `(lsp-headerline-breadcrumb-project-prefix-face ((t (:foreground
-                                                     ,dustveil-color-3))))
- `(lsp-headerline-breadcrumb-path-error-face ((t (:foreground ,dustveil-color-15))))
+                                                      ,dustveil-syntax-literal))))
+ `(lsp-headerline-breadcrumb-path-error-face ((t (:foreground ,dustveil-foreground))))
  `(lsp-headerline-breadcrumb-path-warning-face ((t (:foreground
-                                                   ,dustveil-color-3))))
- `(lsp-headerline-breadcrumb-path-info-face ((t (:foreground ,dustveil-color-5))))
- `(lsp-headerline-breadcrumb-path-hint-face ((t (:foreground ,dustveil-color-6))))
+                                                    ,dustveil-syntax-literal))))
+ `(lsp-headerline-breadcrumb-path-info-face ((t (:foreground ,dustveil-syntax-variable))))
+ `(lsp-headerline-breadcrumb-path-hint-face ((t (:foreground ,dustveil-syntax-variable))))
  `(lsp-headerline-breadcrumb-symbols-error-face ((t (:foreground
-                                                     ,dustveil-color-15))))
+                                                     ,dustveil-foreground))))
  `(lsp-headerline-breadcrumb-symbols-warning-face ((t (:foreground
-                                                      ,dustveil-color-3))))
+                                                       ,dustveil-syntax-literal))))
  `(lsp-headerline-breadcrumb-symbols-info-face ((t (:foreground
-                                                   ,dustveil-color-5))))
+                                                    ,dustveil-syntax-variable))))
  `(lsp-headerline-breadcrumb-symbols-hint-face ((t (:foreground
-                                                   ,dustveil-color-6))))
- `(lsp-headerline-breadcrumb-deprecated-face ((t (:foreground ,dustveil-color-1
-                                                              :strike-through t))))
+                                                    ,dustveil-syntax-variable))))
+ `(lsp-headerline-breadcrumb-deprecated-face ((t (:foreground ,dustveil-secondary
+                                                  :strike-through t))))
  `(lsp-face-semhl-keyword ((t (:inherit font-lock-keyword-face))))
  `(lsp-face-semhl-string ((t (:inherit font-lock-string-face))))
  `(lsp-face-semhl-number ((t (:inherit font-lock-number-face))))
@@ -998,7 +1000,7 @@ Popup faces retain explicit backgrounds.  Reload the theme with
  `(lsp-face-semhl-default-library ((t (:inherit nil :foreground unspecified))))
  `(lsp-face-semhl-deprecated ((t (:strike-through t))))
 
-)
+ )
 
 (let ((colors `((black . ,dustveil-color-0)
                 (red . ,dustveil-color-1)

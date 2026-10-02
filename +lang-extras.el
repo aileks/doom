@@ -71,7 +71,7 @@
                      lhs: (identifier) @font-lock-function-name-face
                      operator: ["<-" "<<-" "="]
                      rhs: (function_definition))
-                    (Binary_operator
+                    (binary_operator
                      lhs: (function_definition)
                      operator: ["->" "->>"]
                      rhs: (identifier) @font-lock-function-name-face))))
