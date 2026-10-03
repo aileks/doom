@@ -1,5 +1,8 @@
 ;;; config.el -*- lexical-binding: t; -*-
 
+(set-frame-parameter nil 'alpha-background 95)
+(add-to-list 'default-frame-alist '(alpha-background . 95))
+
 (setq org-directory "~/org")
 
 (setq doom-theme 'dustveil
