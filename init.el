@@ -1,6 +1,6 @@
 ;;; init.el -*- lexical-binding: t; -*-
 
-(defvar evil-respect-visual-line-mode t)
+(setq evil-respect-visual-line-mode t)
 
 (doom!
  :completion
@@ -48,8 +48,8 @@
 
  :tools
  (eval +overlay)
- (lsp +peek)
  (debugger +lsp)
+ (lsp +peek)
  editorconfig
  lookup
  magit
